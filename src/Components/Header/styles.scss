@@ -1,0 +1,95 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: #FFF;
+box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    figure {
+      margin: 29px 0px 26px 0px;
+      width: 115px;
+      height: 34px;
+      img {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+      }
+    }
+    .tags-container {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      .nav-tags {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        justify-content: center;
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+        li {
+          color: #000;
+          font-family: 'Inter';
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: normal;
+        }
+        :last-child {
+                color: #0078C3;
+        }
+      }
+      span{
+        color: lightgray ;
+      }
+      .search{
+        font-size: 25px;
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+    .header {
+        .header-container {
+          .tags-container {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            .nav-tags {
+              display: flex;
+              gap: 30px;
+              align-items: center;
+              justify-content: center;
+              padding: 0px;
+              margin: 0px;
+              list-style-type: none;
+              li {
+                color: #000;
+                font-family: 'Inter';
+                font-size: 14px;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+              }
+              :last-child {
+                      color: #0078C3;
+              }
+            }
+            span{
+              color: lightgray ;
+            }
+            .search{
+              font-size: 25px;
+              height: 25px;
+              width: 25px;
+            }
+          }
+        }
+      }
+  }
+  
