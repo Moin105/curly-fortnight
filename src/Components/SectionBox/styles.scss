@@ -1,0 +1,27 @@
+.section-box {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  background-color: #0078c3;
+  border-radius: 47px;
+  padding: 90px 100px;
+  h2{
+    color: white;
+  }
+  position: relative;
+  span {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    font-family: Poppins;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: underline;
+  }
+}

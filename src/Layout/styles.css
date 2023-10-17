@@ -17,6 +17,7 @@
   position: relative;
   max-width: 655px;
   width: 40%;
+  margin: 0px 0px 0px 55px;
 }
 .main-layout .main .inner-header .search-field .search-icon {
   position: absolute;
