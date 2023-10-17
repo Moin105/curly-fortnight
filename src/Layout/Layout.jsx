@@ -1,31 +1,33 @@
 import React from "react";
 import "./styles.css";
 import SideNav from "../Components/SideNav/SideNav";
-import {ReactComponent as SearchIcon} from '../Svgs/search.svg'
-import profile from '../Images/profile.png' 
+import { ReactComponent as SearchIcon } from "../Svgs/search.svg";
+import profile from "../Images/profile.png";
+import { Link } from "react-router-dom";
 function Layout({ children }) {
   return (
     <div className="main-layout">
       <SideNav />
       <div className="main">
         <div className="inner-header">
-           <div className="search-field">
+          <div className="search-field">
             <input type="text" placeholder="Search" className="search-input" />
             <span className="search-icon">
               <SearchIcon />
             </span>
-           </div>
+          </div>
 
-           <div className="user-profile">
-                <button>
-                  Add New
-                </button>
-                <div className="profile">
-                         <img  src={profile} alt="profile"/>
-                </div>
-           </div>
+          <div className="user-profile">
+            <Link to="/sections/add-section">
+              <button>Add New</button>
+            </Link>
+            <div className="profile">
+              <img src={profile} alt="profile" />
+            </div>
+          </div>
         </div>
-        {children}</div>
+        {children}
+      </div>
     </div>
   );
 }

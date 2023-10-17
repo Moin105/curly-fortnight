@@ -7,6 +7,7 @@ import Resources from './Pages/Resources/Resources';
 import Notifications from './Pages/Notifications/Notifications';
 import ActivityLog from './Pages/ActivityLog/ActivityLog';
 import Sections from './Pages/Sections/Sections';
+import AddSection from './Pages/AddSection/AddSection';
 function App() {
   return (
     <div className="App">
@@ -18,6 +19,7 @@ function App() {
           <Route path='/notifications' element={<Notifications/> }/>
           <Route path="/activitylog"   element={<ActivityLog/> }  />
           <Route path="/sections" element={<Sections/>}/>
+          <Route path="/sections/add-section" element={<AddSection/>}/>
         </Routes>
       </Router>
     </div>

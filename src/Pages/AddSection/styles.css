@@ -1,0 +1,67 @@
+.add-section-container {
+  display: flex;
+  flex-direction: column;
+}
+.add-section-container .input-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.add-section-container .input-container input {
+  padding: 6px 74px;
+  color: #ada7a7;
+  font-family: Poppins;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  border-radius: 5px;
+  border: 1px solid #ada7a7;
+  background: #fff;
+  outline: none;
+}
+.add-section-container .input-container button {
+  background-color: #0078c3;
+  color: white;
+  font-size: 16px;
+  padding: 10px 25px;
+  border-radius: 444px;
+  border: none;
+  outline: none;
+}
+.add-section-container .long {
+  width: 33%;
+}
+.add-section-container .short {
+  width: 100px;
+}
+.add-section-container table.blueTable {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-spacing: 0px;
+}
+.add-section-container table.blueTable tbody td {
+  font-size: 16px;
+}
+.add-section-container tr {
+  border: 1px solid #C7C7C7;
+}
+.add-section-container .thf {
+  display: flex;
+  flex-direction: column;
+}
+.add-section-container table.blueTable thead {
+  background: #d9d9d9;
+}
+.add-section-container table.blueTable thead th {
+  color: #000;
+  font-family: Poppins;
+  padding: 10px 0px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}/*# sourceMappingURL=styles.css.map */

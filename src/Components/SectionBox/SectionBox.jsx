@@ -1,12 +1,17 @@
-import React from 'react'
-import './styles.css'
-function SectionBox({title}) {
+import React from "react";
+import "./styles.css";
+import { Link } from "react-router-dom";
+function SectionBox({ title }) {
   return (
-    <div className='section-box'>
-        <span>edit</span>
-        <h2>{title}</h2>
-    </div>
-  )
+    <>
+      {/* <Link to={`/sections/${title}`}> */}
+        <div className="section-box">
+          <span>edit</span>
+          <h2>{title}</h2>
+        </div>
+      {/* </Link> */}
+    </>
+  );
 }
 
-export default SectionBox
+export default SectionBox;
