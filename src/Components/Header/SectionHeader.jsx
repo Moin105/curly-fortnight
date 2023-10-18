@@ -4,17 +4,19 @@ import logo from "../../Images/logo.png";
 import { IoSearchOutline } from "react-icons/io5";
 import { ReactComponent as SearchIcon } from "../../Svgs/search.svg";
 import profile from "../../Images/profile.png";
+import { Link } from "react-router-dom";
 function SectionHeader() {
   return (
     <>
       <div className="heading">
+
         <h2>Add New Section</h2>
       </div>
       <div className="section-header">
         <div className="header-container">
-          <figure className="logo">
+       <Link to='/sections'>   <figure className="logo">
             <img src={logo} alt="logo" />
-          </figure>
+          </figure></Link>
           {/* <div className="inner-header"> */}
 
           <div className="search-field">

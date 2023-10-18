@@ -1,1 +1,67 @@
-/*# sourceMappingURL=styles.css.map */
+.activitylog-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 50px 0px 50px;
+}
+.activitylog-container h2 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+  text-align: left;
+  line-height: normal;
+}
+.activitylog-container .activity-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+.activitylog-container .activity-wrapper .long {
+  width: 30%;
+}
+.activitylog-container .activity-wrapper .short {
+  width: 100px;
+}
+.activitylog-container .activity-wrapper table.blueTable {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-spacing: 0px;
+}
+.activitylog-container .activity-wrapper table.blueTable th {
+  color: #000;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.activitylog-container .activity-wrapper table.blueTable tbody td {
+  font-size: 16px;
+  padding: 30px 0px;
+}
+.activitylog-container .activity-wrapper .blue {
+  color: #0B63F8;
+}
+.activitylog-container .activity-wrapper tr {
+  border: 1px solid #F2F2F2;
+}
+.activitylog-container .activity-wrapper .thf {
+  display: flex;
+  flex-direction: column;
+}
+.activitylog-container .activity-wrapper .underline {
+  text-decoration: underline;
+}
+.activitylog-container .activity-wrapper table.blueTable thead th {
+  color: #000;
+  font-family: Poppins;
+  padding: 10px 0px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}/*# sourceMappingURL=styles.css.map */

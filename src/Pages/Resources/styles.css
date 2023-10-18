@@ -1,1 +1,96 @@
-/*# sourceMappingURL=styles.css.map */
+.resources-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 50px 0px 50px;
+}
+.resources-container .rows {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+.resources-container .rows h2 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+  text-align: left;
+  line-height: normal;
+}
+.resources-container .rows .categories {
+  display: flex;
+  gap: 10px;
+}
+.resources-container .rows .categories span {
+  color: #FFF;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  padding: 4px 36px;
+  border-radius: 444px;
+  background-color: #0078C3;
+}
+.resources-container .resources-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+.resources-container .resources-wrapper .long {
+  width: 30%;
+}
+.resources-container .resources-wrapper .green {
+  color: #31bc01;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.resources-container .resources-wrapper .short {
+  width: 100px;
+}
+.resources-container .resources-wrapper table.blueTable {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-spacing: 0px;
+}
+.resources-container .resources-wrapper table.blueTable th {
+  color: #000;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.resources-container .resources-wrapper table.blueTable tbody td {
+  font-size: 16px;
+  padding: 30px 0px;
+}
+.resources-container .resources-wrapper .blue {
+  color: #0b63f8;
+}
+.resources-container .resources-wrapper tr {
+  border: 1px solid #f2f2f2;
+}
+.resources-container .resources-wrapper .thf {
+  display: flex;
+  flex-direction: column;
+}
+.resources-container .resources-wrapper .underline {
+  text-decoration: underline;
+}
+.resources-container .resources-wrapper table.blueTable thead th {
+  color: #000;
+  font-family: Poppins;
+  padding: 10px 0px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,44 @@
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 50px 0px 50px;
+  h2 {
+    color: #000;
+    font-family: Poppins;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    margin: 0px;
+    text-align: left;
+    line-height: normal;
+  }
+  .notification-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    gap: 20px;
+    width: 100% !important; 
+    .notification-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      .notification-text {
+        color: #0b63f8;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      .notification-time {
+        color: #000;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+  }
+}
