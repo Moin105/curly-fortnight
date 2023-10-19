@@ -6,6 +6,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 50px 0px ;
     .login-form {
       padding: 36px 99px 53px 99px;
       border-radius: 61px;
@@ -75,4 +76,91 @@
       }
     }
   }
+}
+
+@media screen and (max-width: 1500px) {
+  .login-page {
+    .login-page-container {
+      .login-form {
+        padding: 16px 50px 13px 50px;
+        border-radius: 61px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        background: #f8f8f8;
+        box-shadow: 0px 7px 7px 0px rgba(0, 0, 0, 0.25);
+        h2 {
+          color: #000;
+          font-family: Inter;
+          font-size: 24px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          margin-bottom: 30px;
+        }
+        input {
+          border-radius: 25px;
+          border: 1px solid #e2e1e1;
+          background: #fff;
+          box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25) inset;
+          outline: none;
+          padding: 19px 6px 18px 20px;
+          color: #000;
+          font-family: Inter;
+          width: 297px;
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        button {
+          background-color: #0078c3;
+          color: #fff;
+          font-family: Inter;
+          font-size: 18px;
+          margin-top: 20px;
+          border: none;
+          border-radius: 25px;
+          padding: 14px 50px;
+          cursor: pointer;
+          font-style: normal;
+          font-weight: 500;
+          width: fit-content;
+          line-height: normal;
+        }
+        p {
+          color: #000;
+          font-family: Inter;
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          font-style: normal;
+          gap: 5px;
+          font-weight: 500;
+          line-height: normal;
+          span {
+            color: #000;
+            font-family: Inter;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+            text-decoration-line: underline;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: 1100px) {
+
+
+}
+
+@media screen and (max-width: 800px) {
+
+
 }

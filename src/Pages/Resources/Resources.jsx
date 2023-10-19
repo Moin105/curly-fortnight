@@ -7,13 +7,12 @@ function Resources() {
       <Layout>
         <div className="resources-container">
           <div className="rows">
-
-          <h2>Resources</h2> 
-          <div className="categories">
-           <span>asdas</span>
-           <span>asdas</span>
-           <span>asdas</span>
-          </div>
+            <h2>Resources</h2>
+            <div className="categories">
+              <span>asdas</span>
+              <span>asdas</span>
+              <span>asdas</span>
+            </div>
           </div>
           <div className="resources-wrapper">
             <table class="blueTable">
@@ -35,9 +34,8 @@ function Resources() {
                     <input type="checkbox" />
                   </td>
                   <td className="blue"> wefwefwef</td>
-                  <td className="green">Shift 1
-(08:00 AM -01:00 PM)</td>
-                  <td >ewfewfwefewfwefewf</td>
+                  <td className="green">Shift 1 (08:00 AM -01:00 PM)</td>
+                  <td>ewfewfwefewfwefewf</td>
                   <td>wfwefwefefwe</td>
                   <td className="long"></td>
                 </tr>
