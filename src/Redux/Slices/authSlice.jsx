@@ -1,60 +1,84 @@
+import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-import { createSlice } from "@reduxjs/toolkit";
+const API_ENDPOINT = "http://23.22.32.42/api";
 
-const initialState = {
+export const signupUser = createAsyncThunk(
+  "userAuth/loginUser",
+  async (userData, thunkAPI) => {
+    try {
+      const response = await axios.post(`${API_ENDPOINT}/signup`, userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = response.data;
+      console.log("data", data);
+
+      return data;
+    } catch (error) {
+      console.error("Error:", error.response.data);
+      return thunkAPI.rejectWithValue({ error: error.response.data });
+    }
+  }
+);
+export const loginUser = createAsyncThunk(
+    "userAuth/loginUser",
+    async (userData, thunkAPI) => {
+      try {
+        const response = await axios.post(`${API_ENDPOINT}/signin`, userData, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+  
+        const data = response.data;
+        console.log("data", data);
+  
+        return data;
+      } catch (error) {
+        console.error("Error:", error.response.data);
+        return thunkAPI.rejectWithValue({ error: error.response.data });
+      }
+    }
+  );
+const userFromStorage = JSON.parse(localStorage.getItem("user")) || null;
+
+const userAuthSlice = createSlice({
+  name: "userAuth",
+  initialState: {
+    user: userFromStorage,
+    loading: "idle",
+    data: null,
+    errors: null,
     token: null,
-    role: null,
-    user:{}
-};
-
-const authSlice = createSlice({
-    name: "auth",
-  initialState,
+  },
   reducers: {
-      login(state, action) {
-        console.log("darasal",action.payload)
-        if (action.payload.token) {
-          state.token = action.payload.token;
-      }
-      if (action.payload.role) {
-          state.role = action.payload.role;
-      }
-      if (action.payload.user ) {
-          state.user = action.payload.user;
-      }
-      if(action.payload.student){
-        state.user = action.payload.student;
-      }
-    },
-    logout(state) {
+    logoutUser: (state) => {
+      state.user = null;
       state.token = null;
-      state.role = null;
-      state.user= {};
     },
-},
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.loading = "pending";
+        state.errors = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.loading = "fulfilled";
+        state.data = action.payload;
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.loading = "rejected";
+        state.errors = action.payload;
+      });
+  },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { logoutUser } = userAuthSlice.actions;
 
-export default authSlice.reducer;
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   isAuthenticated: false,
-// };
-
-// const authSlice = createSlice({
-//   name: 'auth',
-//   initialState,
-//   reducers: {
-//     login(state) {
-//       state.isAuthenticated = true;
-//     },
-//     logout(state) {
-//       state.isAuthenticated = false;
-//     },
-//   },
-// });
-
-// export const { login, logout } = authSlice.actions;
-// export default authSlice.reducer;
+export default userAuthSlice.reducer;
