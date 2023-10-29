@@ -1,6 +1,7 @@
 import React from "react";
 import "./styles.css";
 import logo from "../../Images/logo.png";
+import { Link } from "react-router-dom/dist";
 import {IoSearchOutline} from 'react-icons/io5'
 function Header() {
   return (
@@ -16,6 +17,7 @@ function Header() {
             <li>Home</li>
             <li>About Us</li>
             <li>Career</li>
+            <Link to="/application"><li>Application</li></Link>
             <li>Contact Us</li>
             <li>DMS</li>
           </ul>

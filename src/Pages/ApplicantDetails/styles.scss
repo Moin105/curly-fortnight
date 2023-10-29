@@ -1,0 +1,71 @@
+.applicant-detail-container {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px 0px 50px;
+    .rows {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      h2 {
+        color: #000;
+        font-family: Poppins;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        margin: 0px;
+        text-align: left;
+        line-height: normal;
+      }
+      .categories {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+      }
+      
+      .categories::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+      }
+      .categories {
+        display: flex;
+        overflow-x: scroll;
+        
+        gap: 10px;
+        span {
+          color: #fff;
+          font-family: Poppins;
+          font-size: 16px;
+          font-style: normal;
+          width: fit-content;
+          min-width: 85px;
+          font-weight: 700;
+          line-height: normal;
+          letter-spacing: 0.32px;
+          padding: 4px 36px;
+          border-radius: 444px;
+          background-color: #0078c3;
+        }
+      }
+    }
+  .applicant-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+    .details-row{
+        display: flex;
+        align-items: center;
+        width: 48%;
+        border:1px solid #f3f3f3;
+        .detail-key{
+            background-color: rgb(0, 120, 195,0.3);
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 4px 0px 0px 4px;
+        }
+        .detail-value{
+            font-size: 20px;
+            border-radius: 0px 4px 4px 0px;
+            padding: 10px 20px;
+        }
+    }
+  }
+  }

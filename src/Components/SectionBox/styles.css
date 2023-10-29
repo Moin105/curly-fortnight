@@ -1,22 +1,37 @@
-.section-box {
+.alink {
+  width: 47%;
+  text-decoration: none;
+}
+.alink .section-box {
   color: #fff;
   font-family: Poppins;
+  line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0078c3;
+  border-radius: 47px;
+  height: 300px;
+  position: relative;
+}
+.alink .section-box h2 {
+  color: white;
   font-size: 30px;
   font-style: normal;
   font-weight: 500;
-  line-height: normal;
-  background-color: #0078c3;
-  border-radius: 47px;
-  padding: 90px 100px;
-  position: relative;
 }
-.section-box h2 {
-  color: white;
-}
-.section-box span {
+.alink .section-box .row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   position: absolute;
   top: 15px;
   right: 15px;
+}
+.alink .section-box .row a {
+  font-size: 15px;
+}
+.alink .section-box span {
   color: #fff;
   font-family: Poppins;
   font-size: 15px;

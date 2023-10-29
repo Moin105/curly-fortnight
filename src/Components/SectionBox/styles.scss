@@ -1,21 +1,38 @@
-.section-box {
-  color: #fff;
-  font-family: Poppins;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+.alink{
+  width: 47%;
+  text-decoration: none;
+  .section-box {
+    color: #fff;
+    font-family: Poppins;
+   
+    line-height: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #0078c3;
   border-radius: 47px;
-  padding: 90px 100px;
+  height: 300px;
+  // padding: 90px 100px;
   h2{
     color: white;
+     font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
   }
   position: relative;
-  span {
+  .row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
     position: absolute;
     top: 15px;
     right: 15px;
+    a{
+      font-size: 15px;
+    }
+  }
+  span {
+   
     color: #fff;
     font-family: Poppins;
     font-size: 15px;
@@ -24,4 +41,5 @@
     line-height: normal;
     text-decoration-line: underline;
   }
+}
 }

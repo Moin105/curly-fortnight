@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const token = useSelector((state) => state.userAuth.token);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const isValidEmail = (email) => {
@@ -49,12 +50,12 @@ function Login() {
   }, [error]);
   useEffect(() => {
     console.log("user",user)
-    if(user.user === null){
+    if(token === null){
       return 
     }else{
         navigate("/resources")
     }
-  }, [user])
+  }, [token])
   return (
     <div className="login-page">
           <ToastContainer />

@@ -21,6 +21,12 @@ function Layout({ children }) {
     } else if (location.pathname == "/resources") {
       setNav("4");
       console.log(location.pathname);
+    }else if(location.pathname == "/application"){
+      setNav("5");
+    }
+    
+    else if(location.pathname == "/notification/add-notification"){
+      setNav("6");
     }
   }, [navs, location]);
   return (
@@ -36,9 +42,13 @@ function Layout({ children }) {
           </div>
 
           <div className="user-profile">
-      {navs == "1"   &&   <Link to="/sections/add-section">
+      {navs == "1"   ?   <Link to="/sections/add-section">
               <button>Add New</button>
-            </Link>}
+            </Link>:""}
+            {navs == "3"   ?   <Link to="/notification/add-notification">
+              <button>Create New</button>
+            </Link>: ""}
+
             <div className="profile">
               <img src={profile} alt="profile" />
             </div>

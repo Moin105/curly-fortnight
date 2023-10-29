@@ -1,0 +1,178 @@
+.applicant-container {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 50px 0px 50px;
+}
+.applicant-container .rows {
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+.applicant-container .rows h2 {
+  color: #000;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  margin: 0px;
+  text-align: left;
+  line-height: normal;
+}
+.applicant-container .rows .categories {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+.applicant-container .rows .categories::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+.applicant-container .rows .categories {
+  display: flex;
+  overflow-x: scroll;
+  gap: 10px;
+}
+.applicant-container .rows .categories span {
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  width: -moz-fit-content;
+  width: fit-content;
+  min-width: 85px;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.32px;
+  padding: 4px 36px;
+  border-radius: 444px;
+  background-color: #0078c3;
+}
+.applicant-container .applicant-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+  gap: 20px;
+}
+.applicant-container .applicant-wrapper .long {
+  width: 30%;
+}
+.applicant-container .applicant-wrapper .green {
+  color: #31bc01;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.applicant-container .applicant-wrapper .short {
+  width: 100px;
+}
+.applicant-container .applicant-wrapper table.blueTable {
+  width: 100%;
+  text-align: center;
+  border: none;
+  border-spacing: 0px;
+}
+.applicant-container .applicant-wrapper table.blueTable th {
+  color: #000;
+  font-family: Lato;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.applicant-container .applicant-wrapper table.blueTable tbody td {
+  font-size: 16px;
+  padding: 30px 0px;
+}
+.applicant-container .applicant-wrapper .blue {
+  color: #0b63f8;
+}
+.applicant-container .applicant-wrapper tr {
+  border: 1px solid #f2f2f2;
+}
+.applicant-container .applicant-wrapper .thf {
+  display: flex;
+  flex-direction: column;
+}
+.applicant-container .applicant-wrapper .underline {
+  text-decoration: underline;
+}
+.applicant-container .applicant-wrapper .button {
+  background: #0B63F8; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.applicant-container .applicant-wrapper table.blueTable thead th {
+  color: #000;
+  font-family: Poppins;
+  padding: 10px 0px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Modal Container */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Close Button */
+.modal-content .send {
+  background: #0B63F8; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.modal-content .row {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.modal-content .close {
+  background: #ff6347; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Close Button Hover Effect */
+.modal-content .close:hover {
+  background: #ff4d35; /* Slightly darker red on hover */
+}
+
+.modal-content .send:hover {
+  background: #0B63F8; /* Slightly darker red on hover */
+}/*# sourceMappingURL=styles.css.map */

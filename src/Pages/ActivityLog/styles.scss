@@ -75,3 +75,62 @@ line-height: normal;
     }
   }
   
+
+
+  /* Modal Container */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+/* Close Button */
+.modal-content .send {
+  background: #0B63F8; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.modal-content .row{
+   display: flex;
+   justify-content: center;
+   gap: 10px;
+}
+.modal-content .close {
+  background: #ff6347; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+/* Close Button Hover Effect */
+.modal-content .close:hover {
+  background: #ff4d35; /* Slightly darker red on hover */
+}
+.modal-content .send:hover {
+  background: #0B63F8; /* Slightly darker red on hover */
+}

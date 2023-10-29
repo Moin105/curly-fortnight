@@ -24,6 +24,8 @@ function Signup() {
 const user = useSelector((state) => state.authUser?.user);
 const loading = useSelector((state) => state.userAuth.loading);
 const error = useSelector((state) => state.userAuth?.errors?.error?.errors);
+const token = useSelector((state) => state.userAuth.token);
+
 const handleSignUp = () => {
   if (!username || !email || !password) {
     return toast.error("Please fill all the fields");
@@ -54,12 +56,12 @@ useEffect(() => {
 
 useEffect(() => {
   console.log("user",user)
-  if(user?.user === null){
+  if(token === null){
     return 
   }else{
       navigate("/resources")
   }
-}, [user])
+}, [token])
 
   return (
     <div className="signup-page">
