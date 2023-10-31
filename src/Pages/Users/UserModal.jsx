@@ -5,7 +5,7 @@ function Modal({ isOpen, onClose, children ,onSubmit}) {
 
   return (
     <div className="modal">
-      <div className="modal-contents">
+      <div className="modal-content">
         {children}
      
       </div>

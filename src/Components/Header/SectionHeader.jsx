@@ -5,12 +5,12 @@ import { IoSearchOutline } from "react-icons/io5";
 import { ReactComponent as SearchIcon } from "../../Svgs/search.svg";
 import profile from "../../Images/profile.png";
 import { Link } from "react-router-dom";
-function SectionHeader() {
+function SectionHeader({id}) {
   return (
     <>
       <div className="heading">
 
-        <h2>Add New Section</h2>
+ {id ? <h2 style={{color:"white"}}> ef</h2>  :     <h2>Add New Section</h2>}
       </div>
       <div className="section-header">
         <div className="header-container">

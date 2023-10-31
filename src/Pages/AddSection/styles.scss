@@ -1,6 +1,72 @@
 .add-section-container {
   display: flex;
   flex-direction: column;
+   .rowss {
+    display: flex;
+    margin-top: 20px;
+    gap: 60px;
+    justify-content: space-between;
+    max-width: 90%;
+    margin: 30px auto 30px auto;
+    width: 100%;
+    align-items: center;
+    h2 {
+      color: #000;
+      font-family: Poppins;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      margin: 0px;
+      text-align: left;
+      line-height: normal;
+    }
+    .categories {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .categories::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    .categories {
+      display: flex;
+      overflow-x: scroll;
+      .rin {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        button {
+          background: #0b63f8;
+          border-radius: 5px;
+          border: none;
+          color: #fff;
+          padding: 10px 20px;
+          font-size: 16px;
+          font-weight: 500;
+          font-family: Poppins;
+          cursor: pointer;
+        }
+        .close {
+          background: #ff6347;
+        }
+      }
+      gap: 10px;
+      span {
+        color: #fff;
+        font-family: Poppins;
+        font-size: 16px;
+        font-style: normal;
+        width: fit-content;
+        min-width: 85px;
+        font-weight: 700;
+        line-height: normal;
+        letter-spacing: 0.32px;
+        padding: 4px 36px;
+        border-radius: 444px;
+        background-color: #0078c3;
+      }
+    }
+  }
   .input-container {
     display: flex;
     gap: 20px;
@@ -46,11 +112,20 @@
   }
   table.blueTable td{
     // border: 1px solid #C7C7C7;
+    ul{
+      display: flex;
+      gap: 10px;
+      li{
+        list-style-type: none;
+      }
+    }
   }
   table.blueTable th {
+    border: 1px solid #ada7a7;
   }
   table.blueTable tbody td {
     font-size: 16px;
+    border: 1px solid #ada7a7;
   }
   tr{
     border: 1px solid #C7C7C7; 

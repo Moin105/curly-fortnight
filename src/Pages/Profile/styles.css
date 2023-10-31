@@ -1,0 +1,28 @@
+.profile-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+  align-items: center;
+}
+.profile-wrapper img {
+  width: 60%;
+  -o-object-fit: contain;
+     object-fit: contain;
+  height: 500px;
+}
+.profile-wrapper .profile-text {
+  display: flex;
+  justify-content: flex-start;
+  width: 40%;
+  gap: 20px;
+  font-weight: 600;
+  color: black;
+  font-size: 20px;
+}
+.profile-wrapper .profile-text span {
+  font-weight: 400;
+  color: black;
+  font-size: 18px;
+  text-align: left;
+}/*# sourceMappingURL=styles.css.map */

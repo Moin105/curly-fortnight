@@ -26,6 +26,10 @@
   align-items: center;
   width: 100%;
 }
+.notification-container .notification-wrapper .notification-row a {
+  width: 55%;
+  text-decoration: none;
+}
 .notification-container .notification-wrapper .notification-row .notification-text {
   color: #0b63f8;
   font-family: Poppins;

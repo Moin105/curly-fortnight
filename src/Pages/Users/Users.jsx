@@ -5,19 +5,23 @@ import axios from "axios";
 import Modal from "./UserModal";
 import SectionSelect from "./SectionSelect";
 import { toast, ToastContainer } from "react-toastify";
-import { Link } from "react-router-dom/dist";
 import { useSelector } from "react-redux";
-function ActivityLog() {
+function Users() {
   const [users, setUsers] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [UserInformation, setUserInformation] = useState(null);
   const [sections, setSections] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
+  const [isModalOpens, setIsModalOpens] = useState(false);
   const token = useSelector((state) => state.userAuth.token);
   const API_ENDPOINT = "http://23.22.32.42/api";
   const openModal = () => {
     setIsModalOpen(true);
-  }; const getUsers = async () => {
+  };
+  const openModals = () => {
+    setIsModalOpens(true);
+  };
+  const getUsers = async () => {
     const response = await axios.get(`${API_ENDPOINT}/users`, {
       headers: {
         "Content-Type": "application/json",
@@ -49,8 +53,32 @@ function ActivityLog() {
       toast.error("Something went wrong")
     }
   };
+  const removeAdmin = async (id) => {
+    const response = await axios.put(
+      `${API_ENDPOINT}/users/${id}/make-or-remove-admin`,
+      { section_ids: [] },
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    const data = response.data;
+    console.log("user information", data);
+    if(data.status == 200){
+      getUsers();
+      toast.success(data.message)
+      closeModal();
+    }else{
+      toast.error("Something went wrong")
+    }
+  };
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+  const closeModals = () => {
+    setIsModalOpens(false);
   };
   const handleSelect = (value) => {
     setSelectedOption(value);
@@ -96,7 +124,7 @@ function ActivityLog() {
       {" "}
       <Layout>
         <div className="activitylog-container">
-          <h2>Activity Log</h2>
+          <h2>Users</h2>
           {users && users.length > 0 ? (
             <div className="activity-wrapper">
               <table class="blueTable">
@@ -107,7 +135,6 @@ function ActivityLog() {
                     </th>
                     <th>User </th>
                     <th>Role </th>
-                    <th className="long">Activity</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -120,8 +147,20 @@ function ActivityLog() {
                         </td>
                         <td className="blue">{user.name}</td>
                         <td>{user?.roles[0]?.display_name}</td>
-                        <td className="underline"><Link to={`/activitylog/${user.id}`}><p>wefwefewfwefwef</p></Link></td>
                         <td className="long"></td>
+                        <td
+                          onClick={() => {
+                           if(user?.roles[0]?.display_name == "Admin"){
+                             openModals()
+                             getUserById(user.id);
+                           }else{
+                             openModal("User ");
+                             getUserById(user.id);
+                           } 
+                          }}
+                        >
+                          edit
+                        </td>
                       </tr>
                     );
                   })}{" "}
@@ -146,7 +185,8 @@ function ActivityLog() {
           )}
         </div>
       </Layout>
-      <Modal isOpen={isModalOpen}>
+      <Modal isOpen={isModalOpen} >
+        
         <h2>Edit User Role</h2>
         <div>
           <h3>
@@ -172,8 +212,26 @@ function ActivityLog() {
           </button>
         </div>
       </Modal>
+      <Modal isOpen={isModalOpens} >
+        
+        <h2>Remove Admin Access?</h2>
+        <div className="row">
+
+          <button className="close" onClick={closeModals}>
+            No
+          </button>
+          <button
+            className="send"
+            onClick={() => {
+              removeAdmin(UserInformation?.id);
+            }}
+          >
+            Yes
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }
 
-export default ActivityLog;
+export default Users;

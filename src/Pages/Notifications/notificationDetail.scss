@@ -1,0 +1,27 @@
+.notification-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 50px;
+    align-items: center;
+    img{
+        width: 60%;
+        object-fit: contain;
+        height: 500px;
+    }
+.notification-text{
+    display: flex;
+    justify-content: flex-start;
+    width: 60%;
+    gap: 20px;
+    font-weight: 600;
+    color: black;
+    font-size: 20px;
+    span{
+        font-weight: 400;
+        color: black;
+        font-size: 18px;
+        text-align: left;
+    }
+}
+}

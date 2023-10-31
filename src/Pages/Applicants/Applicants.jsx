@@ -37,7 +37,7 @@ function Applicants() {
             <table class="blueTable">
               <thead>
                 <tr>
-                  <th>Name of Applicant</th>
+                  <th>Name </th>
                   <th>Class </th>
                   <th>Phone Number</th>
                   <th>Email Address</th>

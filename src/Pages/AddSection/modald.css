@@ -12,15 +12,53 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-contents {
   background: white;
+  width: 50%;
   padding: 20px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  width: 300px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   text-align: center;
+}
+.modal-contents .row {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.modal-contents .row .selected-users {
+  display: flex;
+  margin: 10px 0px 0px 0px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.modal-contents .row .selected-users .selected-user {
+  padding: 5px 10px;
+  border-radius: 600px;
+  background-color: #0078C3;
+  position: relative;
+  color: white;
+}
+.modal-contents .row .selected-users .selected-user span {
+  position: absolute;
+  font-size: 12px;
+  right: -5px;
+  color: #1E1E1E;
+  top: 0;
+}
+.modal-contents label {
+  display: flex;
+  flex-direction: column;
+  width: 49%;
+}
+.modal-contents label input, .modal-contents label select {
+  padding: 15px 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.modal-contents input {
+  border-radius: 10px !important;
 }
 
 /* Close Button */

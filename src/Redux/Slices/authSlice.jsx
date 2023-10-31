@@ -24,25 +24,45 @@ export const signupUser = createAsyncThunk(
   }
 );
 export const loginUser = createAsyncThunk(
-    "userAuth/loginUser",
-    async (userData, thunkAPI) => {
-      try {
-        const response = await axios.post(`${API_ENDPOINT}/signin`, userData, {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-  
-        const data = response.data;
-        console.log("data", data);
-  
-        return data;
-      } catch (error) {
-        console.error("Error:", error.response.data);
-        return thunkAPI.rejectWithValue({ error: error.response.data });
-      }
+  "userAuth/loginUser",
+  async (userData, thunkAPI) => {
+    try {
+      const response = await axios.post(`${API_ENDPOINT}/signin`, userData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = response.data;
+      console.log("data", data);
+
+      return data;
+    } catch (error) {
+      console.error("Error:", error.response.data);
+      return thunkAPI.rejectWithValue({ error: error.response.data });
     }
-  );
+  }
+);
+// export const createUser = createAsyncThunk(
+//   "userAuth/loginUser",
+//   async (userData, thunkAPI) => {
+//     try {
+//       const response = await axios.post(`${API_ENDPOINT}/users`, userData, {
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//       });
+
+//       const data = response.data;
+//       console.log("data", data);
+
+//       return data;
+//     } catch (error) {
+//       console.error("Error:", error.response.data);
+//       return thunkAPI.rejectWithValue({ error: error.response.data });
+//     }
+//   }
+// );
 const userFromStorage = JSON.parse(localStorage.getItem("user")) || null;
 
 const userAuthSlice = createSlice({

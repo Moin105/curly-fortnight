@@ -26,6 +26,10 @@ function SideNav() {
       setNav("5");
       console.log(location.pathname);
     }
+    else if (location.pathname == "/users") {
+      setNav("7");
+      console.log(location.pathname);
+    }
   }, [navs, location]);
   return (
     <div className="sidenav">
@@ -87,13 +91,26 @@ function SideNav() {
           {navs == 5 ? (
           <Link to="/applicants">
             <li className="active">
-              <img src={user} /> Application
+              <img src={user} /> Applicants
             </li>
           </Link>
         ) : (
           <Link to="/applicants">
             <li>
-              <img src={user} /> Application
+              <img src={user} /> Applicants
+            </li>
+          </Link>
+        )}
+           {navs == 7 ? (
+          <Link to="/users">
+            <li className="active">
+              <img src={user} /> Users
+            </li>
+          </Link>
+        ) : (
+          <Link to="/users">
+            <li>
+              <img src={user} /> Users
             </li>
           </Link>
         )}

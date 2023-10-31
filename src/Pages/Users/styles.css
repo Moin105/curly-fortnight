@@ -55,10 +55,6 @@
 }
 .activitylog-container .activity-wrapper .underline {
   text-decoration: underline;
-  color: #000 !important;
-}
-.activitylog-container .activity-wrapper .underline a {
-  color: black;
 }
 .activitylog-container .activity-wrapper table.blueTable thead th {
   color: #000;
@@ -111,9 +107,9 @@
   display: flex;
   justify-content: center;
   gap: 10px;
+  /* Close Button Hover Effect */
 }
-
-.modal-content .close {
+.modal-content .row .modal-content .close {
   background: #ff6347; /* Tomato Red */
   color: white;
   border: none;
@@ -122,12 +118,9 @@
   cursor: pointer;
   margin-top: 10px;
 }
-
-/* Close Button Hover Effect */
-.modal-content .close:hover {
+.modal-content .row .modal-content .close:hover {
   background: #ff4d35; /* Slightly darker red on hover */
 }
-
-.modal-content .send:hover {
+.modal-content .row .modal-content .send:hover {
   background: #0B63F8; /* Slightly darker red on hover */
 }/*# sourceMappingURL=styles.css.map */

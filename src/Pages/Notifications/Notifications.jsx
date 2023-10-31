@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import Layout from "../../Layout/Layout";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 function Notifications() {
   const API_ENDPOINT = "http://23.22.32.42/api";
@@ -48,8 +49,10 @@ function Notifications() {
           <div className="notification-wrapper">
             {notifications?.map((notification) => {
               return (
+             
+             
                 <div className="notification-row">
-                  <p className="notification-text">{notification.title}</p>{" "}
+                      <Link to={`/notifications/${notification.id}`}><p className="notification-text">{notification.title}</p>   </Link>{" "}
                   <span className="notification-time">
                     {getTimeSpan(notification.created_at)}
                   </span>

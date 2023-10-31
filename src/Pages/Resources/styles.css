@@ -47,6 +47,7 @@
 }
 .resources-container .rowss {
   display: flex;
+  margin-top: 20px;
   gap: 60px;
   justify-content: space-between;
   align-items: center;
@@ -73,6 +74,25 @@
   overflow-x: scroll;
   gap: 10px;
 }
+.resources-container .rowss .categories .rin {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.resources-container .rowss .categories .rin button {
+  background: #0b63f8;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Poppins;
+  cursor: pointer;
+}
+.resources-container .rowss .categories .rin .close {
+  background: #ff6347;
+}
 .resources-container .rowss .categories span {
   color: #fff;
   font-family: Poppins;
@@ -94,20 +114,6 @@
   margin-top: 20px;
   position: relative;
   gap: 20px;
-}
-.resources-container .resources-wrapper button {
-  position: absolute;
-  right: 0;
-  top: 0;
-  background: #0B63F8;
-  border-radius: 5px;
-  border: none;
-  color: #fff;
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 500;
-  font-family: Poppins;
-  cursor: pointer;
 }
 .resources-container .resources-wrapper .long {
   width: 30%;
@@ -139,7 +145,7 @@
 }
 .resources-container .resources-wrapper table.blueTable tbody td {
   font-size: 16px;
-  padding: 30px 0px;
+  padding: 10px 0px;
 }
 .resources-container .resources-wrapper .blue {
   color: #0b63f8;
@@ -150,6 +156,9 @@
 .resources-container .resources-wrapper .thf {
   display: flex;
   flex-direction: column;
+}
+.resources-container .resources-wrapper .thf td {
+  padding: 0;
 }
 .resources-container .resources-wrapper .underline {
   text-decoration: underline;
@@ -179,7 +188,7 @@
 }
 
 /* Modal Content */
-.modal-content {
+.modal-contents {
   background: white;
   padding: 20px;
   border-radius: 5px;
@@ -191,8 +200,8 @@
 }
 
 /* Close Button */
-.modal-content .send {
-  background: #0B63F8; /* Tomato Red */
+.modal-contents .send {
+  background: #0b63f8; /* Tomato Red */
   color: white;
   border: none;
   border-radius: 5px;
@@ -201,27 +210,49 @@
   margin-top: 10px;
 }
 
-.modal-content .row {
+.modal-contents .row {
   display: flex;
   justify-content: center;
   gap: 10px;
 }
 
-.modal-content .close {
+.modal-contents .close {
   background: #ff6347; /* Tomato Red */
   color: white;
   border: none;
   border-radius: 5px;
+  font-family: "Poppins";
   padding: 10px 20px;
   cursor: pointer;
   margin-top: 10px;
 }
 
 /* Close Button Hover Effect */
-.modal-content .close:hover {
+.modal-contents .close:hover {
   background: #ff4d35; /* Slightly darker red on hover */
 }
 
-.modal-content .send:hover {
-  background: #0B63F8; /* Slightly darker red on hover */
+.modal-contents .send:hover {
+  background: #0b63f8; /* Slightly darker red on hover */
+}
+
+.modal-contents .rowsins {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-contents .rowsins .row-sin {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+  justify-content: flex-start;
+}
+.modal-contents .rowsins .row-sin p, .modal-contents .rowsins .row-sin label {
+  margin: 0px;
+  text-align: left;
+}
+.modal-contents .rowsins .row-sin input,
+.modal-contents .rowsins .row-sin select {
+  padding: 15px 10px;
+  border-radius: 100px;
+  border: 1px solid #ccc;
 }/*# sourceMappingURL=styles.css.map */
