@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 import thunk from "redux-thunk"; 
 // Your reducer
 import userAuthReducer from '../Slices/authSlice';
+import searchSlice from '../Slices/searchSlice';
  
 
 // Configuration for persisting the userAuth slice
@@ -20,6 +21,7 @@ const persistedUserAuthReducer = persistReducer(persistConfig, userAuthReducer);
 const store = configureStore({
   reducer: {
     userAuth: persistedUserAuthReducer,
+    search: searchSlice,
   },
   middleware: [thunk],
 });

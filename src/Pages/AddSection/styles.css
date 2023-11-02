@@ -110,6 +110,15 @@
   border: none;
   border-spacing: 0px;
 }
+.add-section-container table.blueTable td .edit {
+  padding: 2px 10px;
+  margin: 12px auto;
+  width: 50px;
+  border: none;
+  color: white;
+  background: #0b63f8;
+  border-radius: 5px;
+}
 .add-section-container table.blueTable td ul {
   display: flex;
   gap: 10px;
@@ -122,7 +131,25 @@
 }
 .add-section-container table.blueTable tbody td {
   font-size: 16px;
+  padding: 0px;
   border: 1px solid #ada7a7;
+}
+.add-section-container table.blueTable tbody td span {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ada7a7;
+}
+.add-section-container table.blueTable tbody td p {
+  border: 1px solid #ada7a7;
+  padding: 12.4px 4px;
+  margin: 0px;
+}
+.add-section-container table.blueTable tbody td p ul {
+  padding: 0;
+  margin: 0;
+}
+.add-section-container table.blueTable tbody td p ul li {
+  margin: 0;
 }
 .add-section-container tr {
   border: 1px solid #C7C7C7;

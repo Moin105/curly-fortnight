@@ -4,20 +4,36 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { AiFillCloseCircle } from "react-icons/ai";
 import { toast } from "react-toastify";
-const YourModal = ({ closeModal, id, update }) => {
+const EditModalDetail = ({ closeModal, id, update,shiftdata,updateId }) => {
   const [users, setUsers] = useState(null);
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [shifts, setShifts] = useState(null);
   const [currentShift, setCurrentShift] = useState(1);
+  const [shiftdataw, setShiftData] = useState(null);
   const API_ENDPOINT = "http://23.22.32.42/api";
+ useEffect(() => {
+   console.log("shiftData",shiftdata)
+   setSelectedUsers(shiftdata?.users)
+   setFormData((prevData) => ({
+    ...prevData,
+    // date: shiftdata?.date,
+    shift_id: id,
+    need: shiftdata?.need ||1,
+    // hour: shiftdata?.hour,
+    // comment: shiftdata?.comment,
+    staff_ids: shiftdata?.users?.map((user) => user.id) || [],
 
+   }))
+   setCurrentShift(id)
+ }, [])
+ 
   const [formData, setFormData] = useState({
-    section_id: id,
-    date: "",
+    // section_id: id,
+    // date: "",
+    _method:"put",
     shift_id: 1,
     need: 1,
     hour: 8,
-    comment: "",
     staff_ids: [],
   });
 
@@ -26,80 +42,105 @@ const YourModal = ({ closeModal, id, update }) => {
     const selectedUser = users?.find((user) => user.id === selectedUserId);
 
     if (selectedUser) {
-      setFormData((prevData) => {
-        const updatedStaffIds = [...prevData.staff_ids, selectedUserId]; 
-        const hourMultiplier =
-          updatedStaffIds.length > 0 ? updatedStaffIds.length : 1;
+        setFormData((prevData) => {
+            const updatedStaffIds = Array.isArray(prevData.staff_ids)
+              ? [...prevData.staff_ids, selectedUserId]
+              : [selectedUserId]; // If prevData.staff_ids is not an array, initialize a new array with the selectedUserId
+          
+            const hourMultiplier = updatedStaffIds.length > 0 ? updatedStaffIds.length : 1;
+          
+            return {
+              ...prevData,
+              staff_ids: updatedStaffIds,
+              hour: 8 * hourMultiplier,
+            };
+          });
+          
 
-        return {
-          ...prevData,
-          staff_ids: updatedStaffIds,
-          hour: 8 * hourMultiplier, 
-        };
+      setSelectedUsers((prevUsers) => {
+        const newUser = { id: selectedUser.id, name: selectedUser.name };
+        if (Array.isArray(prevUsers)) {
+          return [...prevUsers, newUser];
+        } else {
+          return [newUser]; // If prevUsers is not an array (empty or undefined), return a new array with the new user
+        }
       });
-
-      setSelectedUsers((prevUsers) => [
-        ...prevUsers,
-        { id: selectedUser.id, name: selectedUser.name },
-      ]);
     }
   };
 
   const token = useSelector((state) => state.userAuth.token);
-  const postData = async () => {
-    console.log("toekkken", token);
-    if (formData.date == "") {
-      toast.error("Please select Date");
-      return;
-    } else if (formData.shift_id == "") {
-      toast.error("Please select Shift");
-      return;
-    } else if (formData.need == "") {
-      toast.error("Please enter Need");
-      return;
-    } else if (formData.hour == "") {
-      toast.error("Please enter Hour");
-      return;
-    } else if (formData.staff_ids == []) {
-      toast.error("Please select Staff");
-      return;
-    } else if (
-      formData.need > formData.staff_ids.length ||
-      formData.need < formData.staff_ids.length
-    ) {
-      console.log("FormFormData:", formData, selectedUsers.length);
-      toast.error("Select Staff As Per Need ");
-      return;
-    }
-    console.log("FormFormData:", formData, selectedUsers.length);
-    try {
-      const response = await axios.post(
-        `${API_ENDPOINT}/section-details`,
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+//   const postData = async () => {
+//     console.log("toekkken", token);
+//     if (formData.date == "") {
+//       toast.error("Please select Date");
+//       return;
+//     } else if (formData.shift_id == "") {
+//       toast.error("Please select Shift");
+//       return;
+//     } else if (formData.need == "") {
+//       toast.error("Please enter Need");
+//       return;
+//     } else if (formData.hour == "") {
+//       toast.error("Please enter Hour");
+//       return;
+//     } else if (formData.staff_ids == []) {
+//       toast.error("Please select Staff");
+//       return;
+//     } else if (
+//       formData.need > formData.staff_ids.length ||
+//       formData.need < formData.staff_ids.length
+//     ) {
+//       console.log("FormFormData:", formData, selectedUsers.length);
+//       toast.error("Select Staff As Per Need ");
+//       return;
+//     }
+//     console.log("FormFormData:", formData, selectedUsers.length);
+//     try {
+//       const response = await axios.post(
+//         `${API_ENDPOINT}/section-details`,
+//         formData,
+//         {
+//           headers: {
+//             "Content-Type": "application/json",
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
 
-      console.log("Response:", response.data);
+//       console.log("Response:", response.data);
+//       toast.success(response.data.message);
+//     } catch (error) {
+//       console.error("Error:", error);
+//     }
+//   };
+const postApiData = async () => {
+    try {
+      const response = await axios.post( `${API_ENDPOINT}/section-details/${updateId}`, formData, {
+        headers: {
+          'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`,
+          // Add other headers if needed, such as authorization
+        }
+      });
+      console.log('POST request successful!', response.data);
+      // Handle the response as needed
       toast.success(response.data.message);
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error making POST request:', error);
+      // Handle errors from the request
     }
   };
   useEffect(() => {
     const fetchShifts = async () => {
       try {
-        const response = await axios.get(`${API_ENDPOINT}/shifts`, {
+        const response = await axios.get(`${API_ENDPOINT}/shifts/${id}`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         });
-        const userData = response.data.shifts;
+        const userData = response.data.shift;
+        console.log("shifter", userData)
         setShifts(userData);
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -171,26 +212,27 @@ const YourModal = ({ closeModal, id, update }) => {
   };
 
 
-  const handleShiftIdChange = (e) => {
-    const selectedShiftId = parseInt(e.target.value);
+//   const handleShiftIdChange = (e) => {
+//     // const selectedShiftId = parseInt(e.target.value);
 
-    setFormData({ ...formData, shift_id: selectedShiftId });
-    selectedShiftId && setCurrentShift(selectedShiftId);
-  };
+//     setFormData({ ...formData, shift_id: id });
+//     selectedShiftId && setCurrentShift(id);
+//   };
 
   const handleSubmit = () => {
   
-    console.log("Form Data:", formData);
-    postData();
-    setFormData({
-      section_id: id,
-      date: "",
-      shift_id: 1,
-      need: 1,
-      hour: 8,
-      comment: "",
-      staff_ids: [],
-    });
+    console.log("Form Data:", formData,updateId);
+    postApiData()
+    // postData();
+    // setFormData({
+    //   section_id: id,
+    //   date: "",
+    //   shift_id: 1,
+    //   need: 1,
+    //   hour: 8,
+    //   comment: "",
+    //   staff_ids: [],
+    // });
     update();
     closeModal();
   };
@@ -212,19 +254,20 @@ const YourModal = ({ closeModal, id, update }) => {
           </label>
           <label>
             Shift ID:
-            <select
+            <input
               name="shift_id"
-              value={formData.shift_id}
-              onChange={handleShiftIdChange}
-            >
-              {shifts?.map((shift) => {
+              value={shifts?.name}
+              disabled={true}
+            //   onChange={handleShiftIdChange}
+            />
+              {/* {shifts?.map((shift) => {
                 return (
                   <option value={shift.id} onClick={() => {}}>
                     {shift.name}
                   </option>
                 );
-              })}
-            </select>
+              })} */}
+            {/* </select> */}
           </label>
         </div>
         <div className="row">
@@ -265,7 +308,7 @@ const YourModal = ({ closeModal, id, update }) => {
               )}
             </select>
             <div className="selected-users">
-              {selectedUsers.map((user) => (
+              {selectedUsers?.map((user) => (
                 <div key={user.id} className="selected-user">
                   {user?.name}
                   <span onClick={() => handleDeleteUser(user)}>
@@ -304,4 +347,4 @@ const YourModal = ({ closeModal, id, update }) => {
   );
 };
 
-export default YourModal;
+export default EditModalDetail;

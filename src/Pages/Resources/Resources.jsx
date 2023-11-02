@@ -150,7 +150,7 @@ function Resources() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${API_ENDPOINT}/users`, {
+        const response = await axios.get(`${API_ENDPOINT}/users`,{type:"not_resource"}, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -165,7 +165,10 @@ function Resources() {
     };
     const fetchShifts = async () => {
       try {
-        const response = await axios.get(`${API_ENDPOINT}/shifts`, {
+        const response = await axios.get(`${API_ENDPOINT}/shifts`,
+         {params:{
+          type:"not-resource"
+         },
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -180,9 +183,18 @@ function Resources() {
     fetchUsers();
     fetchShifts();
   }, [token]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredResources, setFilteredResources] = useState([]);
+  useEffect(() => {
+    const filtered = resources.filter((resource) =>
+      resource.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredResources(filtered);
+  }, [searchQuery, resources]);
+ 
   return (
     <div>
-      <Layout>
+      <Layout setSearchQuery={setSearchQuery}>
         <div className="resources-container">
           <div className="rows">
             <h2>Resources</h2>
@@ -249,23 +261,23 @@ function Resources() {
                     <input type="checkbox" />
                   </th>
                   <th>Name </th>
-                  <th>Ability </th>
+                  <th>Availability </th>
                   <th>Assigned Section</th>
                   <th>Assigned By</th>
                   <th className="long"></th>
                 </tr>
               </thead>
               <tbody>
-                {resources.map((resource, index) => {
+                {filteredResources.map((resource, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       <td>
                         <input type="checkbox" />
                       </td>
                       <td className="blue">{resource?.name}</td>
-                      <td className="green">{resource?.status == 1 ? "Available": "N/A"}</td>
-                      <td>{resource?.assigned_section?.name}</td>
-                      <td>{resource?.assigned_by?.name}</td>
+                      <td className="green">{resource?.status == 1 ?<p style={{color:"#31bc01"}}>Available</p> : <p style={{color:"#BC0101"}}> N/A</p>}</td>
+                      <td>{resource?.assigned_section?.name  ? resource?.assigned_section?.name :<p>No Section Assigned</p>}</td>
+                      <td>{resource?.assigned_by?.name  ? resource?.assigned_by?.name : "No One Assigned"}</td>
                       <td className="long"></td>
                     </tr>
                   );

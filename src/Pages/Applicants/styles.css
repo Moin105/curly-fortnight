@@ -6,14 +6,24 @@
 .applicant-container .rows {
   display: flex;
   gap: 60px;
+  justify-content: space-between;
   align-items: center;
 }
+.applicant-container .rows .button {
+  background: #0B63F8; /* Tomato Red */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 .applicant-container .rows h2 {
-  color: #000;
+  color: #0B63F8;
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 600;
   margin: 0px;
   text-align: left;
   line-height: normal;
@@ -76,11 +86,13 @@
   font-family: Lato;
   font-size: 16px;
   font-style: normal;
+  border: 1px solid #343434;
   font-weight: 600;
   line-height: normal;
 }
 .applicant-container .applicant-wrapper table.blueTable tbody td {
   font-size: 16px;
+  border: 1px solid #343434;
   padding: 30px 0px;
 }
 .applicant-container .applicant-wrapper .blue {

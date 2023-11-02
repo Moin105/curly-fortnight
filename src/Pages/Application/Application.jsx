@@ -91,7 +91,27 @@ function Application() {
   const loading = useSelector((state) => state.userAuth.loading);
   const error = useSelector((state) => state.userAuth?.errors?.error?.errors);
   const token = useSelector((state) => state.userAuth.token);
-
+  const handlePhoneChange = (e) => {
+    const phoneNumber = e.target.value;
+    // const phoneRegex = /^\d{0,10}$/; // Allows only digits and up to 10 characters
+  
+    // if (phoneRegex.test(phoneNumber)) {
+      const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
+      setPhone(formattedPhoneNumber);
+    // }
+  };
+  
+  const formatPhoneNumber = (phoneNumber) => {
+    const cleaned = ('' + phoneNumber).replace(/\D/g, ''); // Remove non-numeric characters
+    const match = cleaned.slice(0, 10).match(/^(\d{3})(\d{3})(\d{4})/);
+  
+    if (match) {
+      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+    }
+  
+    return cleaned.slice(0, 10); // Truncate to 10 digits if longer
+  };
+  
   useEffect(() => {
     console.log("error", error);
     for (const key in error) {
@@ -102,7 +122,15 @@ function Application() {
   }, [error]);
   const postApplication = async () => {
     const formData = new FormData();
+    const phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
 
+    if (!phonePattern.test(phone)) {
+      // setPhoneError('Please enter a valid 10-digit phone number');
+      toast.error("Please enter a valid 10-digit phone number")
+      return
+    } else {
+      // setPhoneError('');
+    }
     // Fill in the form data with your parameters
     formData.append("name", name);
     formData.append("email", email);
@@ -140,7 +168,9 @@ function Application() {
       );
 
       console.log("Response:", response.data);
+      toast.success(response.data.message)
       return response.data;
+
     } catch (error) {
       console.error("Error:", error);
       throw new Error("Failed to submit data");
@@ -168,11 +198,12 @@ function Application() {
             type="email"
             placeholder="Enter Your Email"
           />
-          <input
-            onChange={(e) => setPhone(e.target.value)}
-            type="text"
-            placeholder="Enter Your Phone"
-          />
+           <input
+        onChange={handlePhoneChange}
+        type="text"
+        placeholder="Enter Your Phone"
+        value={phone}
+      />
           <input
             onChange={(e) => setAddress(e.target.value)}
             type="text"
@@ -270,7 +301,7 @@ function Application() {
               postApplication();
             }}
           >
-            send
+            Submit
           </button>
         </div>
       </div>

@@ -4,9 +4,11 @@ import SideNav from "../Components/SideNav/SideNav";
 import { ReactComponent as SearchIcon } from "../Svgs/search.svg";
 import profile from "../Images/profile.png";
 import { Link,useLocation } from "react-router-dom";
-function Layout({ children }) {
+import { useSelector } from "react-redux";
+function Layout({ children, setSearchQuery }) {
   const [navs, setNav] = useState("1");
   const location = useLocation();
+  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); 
   useEffect(() => {
     if (location.pathname == "/" || location.pathname == "/sections") {
       setNav("1");
@@ -37,20 +39,25 @@ function Layout({ children }) {
       <div className="main">
         <div className="inner-header">
           <div className="search-field">
-            <input type="text" placeholder="Search" className="search-input" />
+          <input
+              type="text"
+              placeholder="Search"
+              className="search-input"
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
             <span className="search-icon">
               <SearchIcon />
             </span>
           </div>
 
           <div className="user-profile">
-      {navs == "1"   ?   <Link to="/sections/add-section">
+      {navs == "1"  && role == "super_admin"  ?   <Link to="/sections/add-section">
               <button>Add New</button>
             </Link>:""}
             {navs == "3"   ?   <Link to="/notification/add-notification">
               <button>Create New</button>
             </Link>: ""}
-            {navs == "7"   ?   <Link to="/users/add-user">
+            {navs == "7"  && role == "super_admin" ?   <Link to="/users/add-user">
               <button>Create User</button>
             </Link>: ""}
             <Link to="/profile">

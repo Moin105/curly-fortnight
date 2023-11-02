@@ -13,6 +13,7 @@ function Users() {
   const [sections, setSections] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [isModalOpens, setIsModalOpens] = useState(false);
+  const [isModalO, setIsModalO] = useState(false);
   const token = useSelector((state) => state.userAuth.token);
   const API_ENDPOINT = "http://23.22.32.42/api";
   const openModal = () => {
@@ -20,6 +21,12 @@ function Users() {
   };
   const openModals = () => {
     setIsModalOpens(true);
+  };
+  const openMo = () => {
+    setIsModalO(true);
+  };
+  const closeMo = () => {
+    setIsModalO(false);
   };
   const getUsers = async () => {
     const response = await axios.get(`${API_ENDPOINT}/users`, {
@@ -45,18 +52,18 @@ function Users() {
     );
     const data = response.data;
     console.log("user information", data);
-    if(data.status == 200){
+    if (data.status == 200) {
       getUsers();
-      toast.success(data.message)
+      toast.success(data.message);
       closeModal();
-    }else{
-      toast.error("Something went wrong")
+    } else {
+      toast.error("Something went wrong");
     }
   };
   const removeAdmin = async (id) => {
     const response = await axios.put(
       `${API_ENDPOINT}/users/${id}/make-or-remove-admin`,
-      { section_ids: [] },
+      {},
       {
         headers: {
           "Content-Type": "application/json",
@@ -66,12 +73,38 @@ function Users() {
     );
     const data = response.data;
     console.log("user information", data);
-    if(data.status == 200){
+    if (data.status == 200) {
       getUsers();
-      toast.success(data.message)
-      closeModal();
-    }else{
-      toast.error("Something went wrong")
+      toast.success(data.message);
+      closeModals();
+    } else {
+      toast.error("Something went wrong");
+    }
+  };
+  const deleteUser = async (userId) => {
+    try {
+      const response = await axios.get(
+        `${API_ENDPOINT}/users/delete/${userId}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      // Check the response and handle the success
+      if (response.status === 200) {
+        getUsers();
+        toast.success(response.data.message);
+        closeMo();
+        // console.log(data);
+        
+        // Perform any additional actions upon successful deletion
+      }
+    } catch (error) {
+      console.error("Error deleting user:", error);
+      // Handle errors here
     }
   };
   const closeModal = () => {
@@ -96,7 +129,6 @@ function Users() {
     setSections(data.sections);
   };
 
- 
   const getUserById = async (id) => {
     const response = await axios.get(`${API_ENDPOINT}/users/${id}`, {
       headers: {
@@ -118,11 +150,19 @@ function Users() {
 
   // Assuming 'users' is the array that contains objects with 'email' field
   const filteredUsers = users?.filter((user) => user.email !== emailToRemove);
+  const [searchQuery, setSearchQuery] = useState("");
+  console.log("searchData", searchQuery);
+  const [filteredUserses, setFilteredUserses] = useState(null);
+  useEffect(() => {
+    const filtered = users?.filter((user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredUserses(filtered);
+  }, [searchQuery, users]);
   return (
     <div>
-      <ToastContainer />
-      {" "}
-      <Layout>
+      <ToastContainer />{" "}
+      <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
           <h2>Users</h2>
           {users && users.length > 0 ? (
@@ -130,36 +170,52 @@ function Users() {
               <table class="blueTable">
                 <thead>
                   <tr>
-                    <th>
+                    {/* <th>
                       <input type="checkbox" />
+                    </th> */}
+                    <th style={{ padding: "10px 20px", textAlign: "left" }}>
+                      {" "}
+                      User{" "}
                     </th>
-                    <th>User </th>
                     <th>Role </th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredUsers.map((user, index) => {
+                  {filteredUserses?.map((user, index) => {
                     return (
                       <tr key={index}>
-                        <td>
+                        {/* <td>
                           <input type="checkbox" />
+                        </td> */}
+                        <td
+                          className="blue"
+                          style={{ padding: "10px 20px", textAlign: "left" }}
+                        >
+                          {user.name}
                         </td>
-                        <td className="blue">{user.name}</td>
                         <td>{user?.roles[0]?.display_name}</td>
                         <td className="long"></td>
-                        <td
-                          onClick={() => {
-                           if(user?.roles[0]?.display_name == "Admin"){
-                             openModals()
-                             getUserById(user.id);
-                           }else{
-                             openModal("User ");
-                             getUserById(user.id);
-                           } 
-                          }}
-                        >
-                          edit
+                        <td>
+                          <p
+                            onClick={() => {
+                              if (user?.roles[0]?.display_name == "Admin") {
+                                openModals();
+                                getUserById(user.id);
+                              } else {
+                                openModal("User ");
+                                getUserById(user.id);
+                              }
+                            }}
+                          >
+                            edit
+                          </p>
+                          <p
+                            onClick={() => {
+                              openMo();
+                              getUserById(user.id);
+                            }}
+                          >delete</p>
                         </td>
                       </tr>
                     );
@@ -185,8 +241,7 @@ function Users() {
           )}
         </div>
       </Layout>
-      <Modal isOpen={isModalOpen} >
-        
+      <Modal isOpen={isModalOpen}>
         <h2>Edit User Role</h2>
         <div>
           <h3>
@@ -212,11 +267,9 @@ function Users() {
           </button>
         </div>
       </Modal>
-      <Modal isOpen={isModalOpens} >
-        
+      <Modal isOpen={isModalOpens}>
         <h2>Remove Admin Access?</h2>
         <div className="row">
-
           <button className="close" onClick={closeModals}>
             No
           </button>
@@ -224,6 +277,22 @@ function Users() {
             className="send"
             onClick={() => {
               removeAdmin(UserInformation?.id);
+            }}
+          >
+            Yes
+          </button>
+        </div>
+      </Modal>
+      <Modal isOpen={isModalO}>
+        <h2>Delete User?</h2>
+        <div className="row">
+          <button className="close" onClick={closeMo}>
+            No
+          </button>
+          <button
+            className="send"
+            onClick={() => {
+              deleteUser(UserInformation?.id);
             }}
           >
             Yes

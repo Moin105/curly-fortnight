@@ -87,14 +87,22 @@ function ActivityLog() {
     };
   }, []);
   const emailToRemove = "superadmin@admin.com";
-
+  const [searchQuery, setSearchQuery] = useState("");
   // Assuming 'users' is the array that contains objects with 'email' field
   const filteredUsers = users?.filter((user) => user.email !== emailToRemove);
+  console.log("searchData", searchQuery)
+  const [filteredUserses, setFilteredUserses] = useState(null);
+  useEffect(() => {
+    const filtered = users?.filter((user) =>
+      user.name.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    setFilteredUserses(filtered);
+  }, [searchQuery, users]);
   return (
     <div>
       <ToastContainer />
       {" "}
-      <Layout>
+      <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
           <h2>Activity Log</h2>
           {users && users.length > 0 ? (
@@ -112,7 +120,7 @@ function ActivityLog() {
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredUsers.map((user, index) => {
+                  {filteredUserses?.map((user, index) => {
                     return (
                       <tr key={index}>
                         <td>

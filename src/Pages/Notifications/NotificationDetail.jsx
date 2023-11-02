@@ -7,6 +7,7 @@ function NotificationDetail() {
   const [notification, setNotification] = useState([]);
   const token = useSelector((state) => state.userAuth.token);
   const { id } = useParams();
+  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
   const API_ENDPOINT = "http://23.22.32.42/api";
   console.log("idge", id);
   const getNotificationData = async () => {
@@ -30,8 +31,8 @@ function NotificationDetail() {
         <img src={`http://23.22.32.42/storage/${notification.attachment}`}/>
         <p className="notification-text">Description: <span>{notification?.description}</span></p>
         <p className="notification-text">From: <span>{notification?.creator?.name}</span></p>
-        <p className="notification-text">To{notification?.users.map((user)=>{return <span>{user.name}</span>})}</p>
-      
+      {role == "super_admin" && <p className="notification-text">To{notification?.users?.map((user)=>{return <span>{user?.name}</span>})}</p>
+      }
       </div>
     </div>
   );

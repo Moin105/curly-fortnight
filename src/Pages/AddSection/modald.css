@@ -24,7 +24,6 @@
 }
 .modal-contents .row {
   display: flex;
-  justify-content: space-between;
   gap: 10px;
 }
 .modal-contents .row .selected-users {
@@ -50,6 +49,7 @@
 .modal-contents label {
   display: flex;
   flex-direction: column;
+  text-align: left;
   width: 49%;
 }
 .modal-contents label input, .modal-contents label select {
@@ -74,8 +74,8 @@
 
 .modal-content .row {
   display: flex;
-  justify-content: center;
   gap: 10px;
+  width: 50%;
 }
 
 .modal-content .close {

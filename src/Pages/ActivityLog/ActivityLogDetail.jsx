@@ -24,7 +24,22 @@ function ActivityLogDetail() {
   useEffect(() => {
    getActivitiesData()
   }, [])
+  function getDate(dateTimeString) {
+    const dateObj = new Date(dateTimeString);
+    const year = dateObj.getFullYear();
+    const month = (dateObj.getMonth() + 1).toString().padStart(2, '0'); // Adding 1 to month as it starts from 0
+    const day = dateObj.getDate().toString().padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
   
+  // Function to extract the time
+  function getTime(dateTimeString) {
+    const dateObj = new Date(dateTimeString);
+    const hours = dateObj.getHours().toString().padStart(2, '0');
+    const minutes = dateObj.getMinutes().toString().padStart(2, '0');
+    const seconds = dateObj.getSeconds().toString().padStart(2, '0');
+    return `${hours}:${minutes}:${seconds}`;
+  }
   return (
     <div className="activity-page">
     <ToastContainer />
@@ -41,11 +56,24 @@ function ActivityLogDetail() {
                   </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td className="long">wefwefewfwe</td>
-                    <td>wefwefwefwe</td>
-                    <td>qwe3 32423</td>
-                </tr>
+                {
+  activity && activity.length === 0 ? (
+    <tr>
+      <td colSpan="3">No activities to display</td>
+    </tr>
+  ) : (
+    activity?.map((active,index) => {
+      return (
+        <tr key={index}>
+          <td className='long'>{active.description}</td>
+          <td>{getDate(active.created_at)}</td>
+          <td>{getTime(active.created_at)}</td>
+        </tr>
+      );
+    })
+  )
+}
+
                 </tbody>
               </table>
   </div>

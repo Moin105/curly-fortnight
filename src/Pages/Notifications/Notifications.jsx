@@ -8,6 +8,8 @@ function Notifications() {
   const API_ENDPOINT = "http://23.22.32.42/api";
   const token = useSelector((state) => state.userAuth.token);
   const [notifications, setNotification] = useState(null);
+  const [filteredNotifications, setFilteredNotifications] = useState(null);
+
   const getNotifications = async () => {
     const response = await axios.get(`${API_ENDPOINT}/notifications`, {
       headers: {
@@ -41,24 +43,38 @@ function Notifications() {
       return postDate; // For older posts, just show the date in the format 'YYYY-MM-DD'
     }
   };
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+    if (query.trim() === "") {
+      setFilteredNotifications(null); // Reset filters when search query is empty
+    } else {
+      const filtered = notifications.filter((notification) =>
+        notification.title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredNotifications(filtered);
+    }
+  };
+
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
     <div>
-      <Layout>
+      <Layout setSearchQuery={handleSearch}>
         <div className="notification-container">
           <h2>Notification</h2>
           <div className="notification-wrapper">
-            {notifications?.map((notification) => {
-              return (
-             
-             
-                <div className="notification-row">
-                      <Link to={`/notifications/${notification.id}`}><p className="notification-text">{notification.title}</p>   </Link>{" "}
+            {(searchQuery ? filteredNotifications : notifications)?.map(
+              (notification) => (
+                <div className="notification-row" key={notification.id}>
+                  <Link to={`/notifications/${notification.id}`}>
+                    <p className="notification-text">{notification.title}</p>
+                  </Link>{" "}
                   <span className="notification-time">
                     {getTimeSpan(notification.created_at)}
                   </span>
                 </div>
-              );
-            })}
+              )
+            )}
           </div>
         </div>
       </Layout>
