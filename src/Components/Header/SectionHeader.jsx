@@ -10,7 +10,7 @@ function SectionHeader({id}) {
     <>
       <div className="heading">
 
- {id ? <h2 style={{color:"white"}}> ef</h2>  :     <h2>Add New Section</h2>}
+ {id ? <h2 style={{color:"white"}}> ef</h2>  :     <h2>Add New Facility</h2>}
       </div>
       <div className="section-header">
         <div className="header-container">

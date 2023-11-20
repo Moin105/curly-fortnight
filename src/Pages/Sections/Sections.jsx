@@ -117,7 +117,7 @@ function Sections() {
     <div>
       <Layout setSearchQuery={setSearchQuery}>
         <div className="sections-container">
-          <h2>Sections</h2>
+          <h2>Facility</h2>
           <div className="section-wrapper">
             {filteredSections.length > 0 ? (
               filteredSections.map((section) => (
