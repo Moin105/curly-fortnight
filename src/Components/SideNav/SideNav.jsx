@@ -47,6 +47,9 @@ function SideNav() {
     } else if (location.pathname == "/users") {
       setNav("7");
       console.log(location.pathname);
+    }else if(location.pathname == "/shifts"){
+      setNav("8");
+      console.log(location.pathname);
     }
   }, [navs, location]);
 
@@ -150,6 +153,17 @@ function SideNav() {
                 </li>
               )}
             </Link>
+            <Link to="/shifts">
+              {navs === 8 ? (
+                <li className="active">
+                  <SectionIcon /> Shifts
+                </li>
+              ) : (
+                <li>
+                  <SectionIcon /> Shifts
+                </li>
+              )}
+            </Link>
 
             <Link to="/activitylog">
               {navs === 2 ? (
@@ -202,11 +216,11 @@ function SideNav() {
             <Link to="/users">
               {navs === 7 ? (
                 <li className="active">
-                  <img src={user} alt="Users" /> Users
+                  <img src={user} alt="Users" /> Employees
                 </li>
               ) : (
                 <li>
-                  <img src={user} alt="Users" /> Users
+                  <img src={user} alt="Users" /> Employees
                 </li>
               )}
             </Link>

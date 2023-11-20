@@ -8,7 +8,9 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import Modal from "./Modal";
 import { Link } from "react-router-dom";
 import { current } from "@reduxjs/toolkit";
+
 function Resources() {
+
   const [resourcesCategories, setResourcesCategories] = useState([]);
   const API_ENDPOINT = "http://23.22.32.42/api";
   const [show, setShow] = useState(false);
@@ -19,9 +21,11 @@ function Resources() {
   const [name, setName] = useState("");
   const [users, setUsers] = useState([]);
   const [shifts, setShifts] = useState([]);
+  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
+
   const [userResourceData, setUserResourceData] = useState({
     category_id: "",
-    resource_type: "App\\Models\\User",
+    resource_type: '',
     resource_id: "",
     name: "",
     shift_id: "",
@@ -42,6 +46,10 @@ function Resources() {
       // name: selectedUser.name,
     });
   };
+  const handleResourceTypeChange = (e) => {
+    const selectedResourceType = e.target.value;
+    setUserResourceData({ ...userResourceData, resource_type: selectedResourceType });
+  }
 
   const handleShiftIdChange = (e) => {
     const selectedShiftId = parseInt(e.target.value);
@@ -88,6 +96,18 @@ function Resources() {
     setResources(data.resources);
   };
   const  postResources = async () => {
+    if(userResourceData.name == ""){
+      toast.error("Please enter resource name");
+      return
+    }
+    else if(userResourceData.shift_id == ''){
+      toast.error("Please select shift");
+      return
+    }
+    else if (userResourceData.resource_id == ""){
+      toast.error("Please select user");
+      return
+    }
     const response = await axios.post(`${API_ENDPOINT}/resources`, userResourceData,{
       headers: {
         "Content-Type": "application/json",
@@ -150,7 +170,9 @@ function Resources() {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(`${API_ENDPOINT}/users`,{type:"not_resource"}, {
+        const response = await axios.get(`${API_ENDPOINT}/users`, {params:{
+          type:"not-resource"
+         },
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -166,9 +188,7 @@ function Resources() {
     const fetchShifts = async () => {
       try {
         const response = await axios.get(`${API_ENDPOINT}/shifts`,
-         {params:{
-          type:"not-resource"
-         },
+         {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -326,7 +346,7 @@ function Resources() {
       <Modal isOpen={isModalOpens}>
         <h2>Create Resource</h2>
         <div className="rowsins">
-          <div className="row-sin" style={{ width: "100%" }}>
+          <div className="row-sin" >
             <p>Name</p>
             <input
               type="text"
@@ -337,17 +357,31 @@ function Resources() {
               }}
             />
           </div>
+          <div className="row-sin" >
+            <p>Resource Type</p>
+            <select
+              id="dropdown"
+              name="shift_id"
+              value={userResourceData.resource_type}
+              onChange={handleResourceTypeChange}
+            >
+              <option value="">Select Resource Type</option>
+              <option value="App\Models\User">Employee</option>
+              <option value="App\Models\Equipment">Equipment</option>
+              
+            </select>
+          </div>
         </div>
         <div className="rowsins">
           <div className="row-sin">
-            <label htmlFor="dropdown">Users:</label>
+            <label htmlFor="dropdown">Employees:</label>
             <select
               id="dropdown"
               name="resource_id"
               value={userResourceData.resource_id}
               onChange={handleStaffIdsChange}
             >
-              <option value="">Select User</option>
+              <option value="">Select Employee</option>
               {users?.map((user) => {
                 return <option value={user.id}>{user.name}</option>;
               })}
@@ -384,6 +418,7 @@ function Resources() {
           </button>
         </div>
       </Modal>
+      <ToastContainer/>
     </div>
   );
 }

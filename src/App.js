@@ -24,6 +24,8 @@ import ActivityLogDetail from "./Pages/ActivityLog/ActivityLogDetail";
 import CreateUser from "./Pages/CreateUser/CreateUser";
 import NotificationDetail from "./Pages/Notifications/NotificationDetail";
 import Profile from "./Pages/Profile/Profile";
+import Shifts from "./Pages/Shifts/Shifts";
+import CreateShift from "./Pages/CreateShift/CreateShift";
 function App() {
   const token = useSelector((state) => state.userAuth.token);
 
@@ -106,23 +108,26 @@ function App() {
       <Router>
         <Routes>
           {renderRoutes()}
-          {/* <Route path="/" element={<Login/>}/>
+          <Route path="/" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path='/application' element={<Application/>}/>
           <Route path="/applicants" element={<Applicants/>}/>
           <Route path="/applicant-detail/:id" element={<ApplicantDetails/>}/>
           <Route path="/resources" element={<Resources/>}/>
+          <Route path="/shifts/add-shift" element={<CreateShift/>}/>
+          <Route path="/shifts/edit-shift/:id" element={<CreateShift/>}/>
           <Route path="/notification/add-notification" element={<AddNotification/>}/>
           <Route path="/notifications/:id" element={<NotificationDetail/>}/>
           <Route path='/notifications' element={<Notifications/> }/>
           <Route path="/activitylog"   element={<ActivityLog/> }  />
           <Route path="/sections" element={<Sections/>}/>
+          <Route path="/shifts" element={<Shifts/>}/>
           <Route path="/sections/add-section" element={<AddSection/>}/>
           <Route path="/sections/add-section/:id" element={<AddSection/>}/>
           <Route path="/activitylog/:id" element={<ActivityLogDetail/>}/>
           <Route path="/users" element={<Users/>}/>
-          <Route path='/users/add-user' element={<CreateUser/>}/> */}
+          <Route path='/users/add-user' element={<CreateUser/>}/>
         </Routes>
       </Router>
     </div>

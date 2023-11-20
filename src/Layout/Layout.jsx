@@ -28,7 +28,9 @@ function Layout({ children, setSearchQuery }) {
     }else if(location.pathname == '/users'){
       setNav("7")
     }
-    
+    else if (location.pathname == "/shifts") {
+      setNav("8");
+    }
     else if(location.pathname == "/notification/add-notification"){
       setNav("6");
     }
@@ -59,6 +61,9 @@ function Layout({ children, setSearchQuery }) {
             </Link>: ""}
             {navs == "7"  && role == "super_admin" ?   <Link to="/users/add-user">
               <button>Create User</button>
+            </Link>: ""}
+            {navs == "8"  && role == "super_admin" ?   <Link to="/shifts/add-shift">
+              <button>Create Shift</button>
             </Link>: ""}
             <Link to="/profile">
             <div className="profile">

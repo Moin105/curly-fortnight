@@ -85,6 +85,7 @@ const YourModal = ({ closeModal, id, update }) => {
       );
 
       console.log("Response:", response.data);
+      update()
       toast.success(response.data.message);
     } catch (error) {
       console.error("Error:", error);

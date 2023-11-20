@@ -53,7 +53,7 @@ function Login() {
     if(token === null){
       return 
     }else{
-        navigate("/resources")
+      navigate("/sections")
     }
   }, [token])
   return (

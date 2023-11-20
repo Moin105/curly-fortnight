@@ -25,4 +25,15 @@
   color: black;
   font-size: 18px;
   text-align: left;
+}
+.profile-wrapper .logout {
+  background: #0b63f8;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: Poppins;
+  cursor: pointer;
 }/*# sourceMappingURL=styles.css.map */

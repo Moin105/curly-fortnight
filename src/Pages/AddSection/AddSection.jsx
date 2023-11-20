@@ -12,12 +12,12 @@ import EditModalDetail from "./EditModalDetail";
 import CommentModal from "./CommentModal";
 function AddSection() {
   const [sectionDates, setSectionDates] = useState([]);
-  const [comment,setComment]= useState("")
+  const [comment, setComment] = useState("");
   const [userInput, setUserInput] = useState("");
-  const [shows,setShows]=useState(false)
+  const [shows, setShows] = useState(false);
   const [updateShift, setUpdateShift] = useState(null);
   const [tableData, setTableData] = useState([]);
-  const [display,setDisplay]=useState(false)
+  const [display, setDisplay] = useState(false);
   const [users, setUsers] = useState([]);
   const token = useSelector((state) => state.userAuth.token);
   const { id } = useParams();
@@ -132,74 +132,49 @@ function AddSection() {
     }
   }, [selectedDate, sectionDates]);
   const availableDates = sectionDates?.map((item) => item.date);
-  const [editableRow, setEditableRow] = useState(null);
   const [update_id, setUpdateId] = useState(null);
   const [currentShift, setCurrentShift] = useState(null);
   const handleEdit = (shift) => {
     // setCurrentShift(shift);
-    console.log("shiftdata", shift.id,shift);
-    setUpdateShift(shift)
-    
+    console.log("shiftdata", shift.id, shift);
+    setUpdateShift(shift);
+
     setShows(true);
   };
 
-  const handleSave = () => {
-    setEditableRow(null); // Disables editing mode after save
-  };
+  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
 
-  const handleInputChange = (value, field, index) => {
-    setTableData((prevState) => {
-      const newData = prevState.map((row, i) => {
-        if (i === index) {
-          return { ...row, [field]: value };
-        }
-        return row;
-      });
-      return newData;
-    });
-  };
-  const handleNeedChange = (value, index) => {
-    setTableData((prevState) => {
-      const newData = prevState.map((row, i) => {
-        if (i === index) {
-          const updatedRow = { ...row, need: parseInt(value, 10) }; // Update 'need' in the row
-          // For instance, limit the staff selection to the first 'n' users according to 'need'
-          const limitedStaff = users.slice(0, updatedRow.need);
-
-          updatedRow.staff_ids = limitedStaff.map((user) => user.id);
-          return updatedRow;
-        }
-        return row;
-      });
-      return newData;
-    });
-  };
   return (
     <div className="add-section-container">
       <SectionHeader id={id} />
       <ToastContainer />
       {id ? (
-        <div className="rowss">
-          <h2>Filter</h2>
-          <div className="categories">
-            <div className="rin">
-              <button
-                onClick={() => {
-                  setShow(!show);
-                  setCurrentShift("");
-                  setShiftData(null);
-                }}
-              >
-                Assign Duties
-              </button>
+        <>
+          {role == "user" ? (
+            ""
+          ) : (
+            <div className="rowss">
+              <div className="categories">
+                <div className="rin">
+                  <button onClick={() => {}}>Previous Dates</button>
+                </div>
+              </div>
+              <div className="categories">
+                <div className="rin">
+                  <button
+                    onClick={() => {
+                      setShow(!show);
+                      setCurrentShift("");
+                      setShiftData(null);
+                    }}
+                  >
+                    Assign Duties
+                  </button>
+                </div>
+              </div>
             </div>
-            {/* <AiFillCloseCircle
-                  onClick={() => {
-                    setCurrentResourceCategory(null);
-                  }}
-                /> */}
-          </div>
-        </div>
+          )}
+        </>
       ) : (
         <div className="input-container">
           <input
@@ -220,7 +195,7 @@ function AddSection() {
           </button>
         </div>
       )}
-      <table className="blueTable">
+      <table className="blueTable" style={{ margin: "20px 0px 0px 0px" }}>
         <thead>
           <tr>
             <th>Date</th>
@@ -237,140 +212,76 @@ function AddSection() {
             <tr key={index}>
               <td>{data?.date}</td>
               <td>
-                <p>
-                  {data.section_details[0]?.shift?.name
-                    ? data.section_details[0]?.shift?.name
-                    : "Morning"}
-                </p>
-                <p>
-                  {data.section_details[1]?.shift?.name
-                    ? data.section_details[1]?.shift?.name
-                    : "Evening"}
-                </p>
-                <p>
-                  {data.section_details[2]?.shift?.name
-                    ? data.section_details[2]?.shift?.name
-                    : "Night"}
-                </p>
+                {data.section_details.map((detail, shiftIndex) => (
+                  <>{detail?.shift?.name ? <p>{detail?.shift?.name}</p> : ''}</>
+                ))}
+
+            
               </td>
               <td>
-                <p>
-                  {data.section_details[0]?.need
-                    ? data.section_details[0]?.need
-                    : "0"}
-                </p>
-                <p>
-                  {data.section_details[1]?.need
-                    ? data.section_details[1]?.need
-                    : "0"}
-                </p>
-                <p>
-                  {data.section_details[2]?.need
-                    ? data.section_details[2]?.need
-                    : "0"}
-                </p>
+                {data.section_details.map((detail, shiftIndex) => (
+                <>{detail?.shift?.name ?  <p>{detail?.need}</p>:''}</>
+                ))}
+           
               </td>
               <td>
-                <p>
-                  {data?.section_details[0]?.users.length > 0 ? (
-                    <ul>
-                      {data?.section_details[0]?.users.map(
-                        (user, userIndex) => {
-                          return <li key={userIndex}>{user.name}</li>;
-                        }
-                      )}
-                    </ul>
-                  ) : (
-                    "No user assigned"
-                  )}
-                </p>
-                <p>
-                  {data?.section_details[1]?.users.length > 0 ? (
-                    <ul>
-                      {data?.section_details[0]?.users.map(
-                        (user, userIndex) => {
-                          return <li key={userIndex}>{user.name}</li>;
-                        }
-                      )}
-                    </ul>
-                  ) : (
-                    "No user assigned"
-                  )}
-                </p>
-                <p>
-                  {data?.section_details[2]?.users.length > 0 ? (
-                    <ul>
-                      {data?.section_details[0]?.users.map(
-                        (user, userIndex) => {
-                          return <li key={userIndex}>{user.name}</li>;
-                        }
-                      )}
-                    </ul>
-                  ) : (
-                    "No user assigned"
-                  )}
-                </p>
+                {data.section_details.map((detail, shiftIndex) => (
+            <> {  detail?.shift?.name ?   <p>
+                    {detail.users.length > 0 ? (
+                      <ul>
+                        {data?.section_details[0]?.users.map(
+                          (user, userIndex) => {
+                            return <li key={userIndex}>{user.name}</li>;
+                          }
+                        )}
+                      </ul>
+                    ) : (
+                      "No user assigned"
+                    )}
+                  </p> : ''}</>
+                ))}
+            
               </td>
               <td>
-                <p>
-                  {data.section_details[0]?.hour
-                    ? data.section_details[0]?.hour
-                    : 0}
-                </p>
-                <p>
-                  {data.section_details[1]?.hour
-                    ? data.section_details[1]?.hour
-                    : 0}
-                </p>
-                <p>
-                  {data.section_details[2]?.hour
-                    ? data.section_details[2]?.hour
-                    : 0}
-                </p>
+                {data.section_details.map((detail, shiftIndex) => (
+                 <>{detail?.shift?.name ?    <p>{detail.hour}</p>: ''}</>
+                ))}
+             
               </td>
               <td>
-                <p style={{padding:"12px"}} onClick={()=>{
-                  console.log("comment show",data.section_details[1])
-                  setDisplay(true)
-                  setComment(data.section_details[1]?.comment)
-                  console.log("comment show",data.section_details[1]?.comment)
-                  setUpdateShift(1)
-                  setUpdateId(data.id)
-                }}>
-                  <FcComments />
-                  {/* {data.section_details[0]?.comment
-                    ? data.section_details[0]?.comment
-                    : "No Comment Added Yet"} */}
-                </p>
-                <p style={{padding:"12px"}} onClick={()=>{
-                  // setDisplay(true)
-                  setComment(data.section_details[2]?.comment)
-                  console.log("comment show",data.section_details[2]?.comment)
-                   setUpdateShift(2)
-                  setUpdateId(data.id)
-                }}>
-                  {" "}
-                  <FcComments />
-                  {/* {data.section_details[1]?.comment
-                    ? data.section_details[1]?.comment
-                    : "No Comment Added Yet"} */}
-                </p>
-                <p style={{padding:"12px"}} onClick={()=>{
-                  setDisplay(true)
-                  setComment(data.section_details[3]?.comment)
-                  console.log("comment show",data.section_details[3]?.comment)
-                  setUpdateShift(3)
-                  setUpdateId(data.id)
-                }}>
-                  {" "}
-                  <FcComments />
-                  {/* {data.section_details[2]?.comment
-                    ? data.section_details[2]?.comment
-                    : "No Comment Added Yet"} */}
-                </p>
+                {data.section_details.map((detail, shiftIndex) => (
+               <>{detail?.shift?.name ?        <p
+                    onClick={() => {
+                      setDisplay(true);
+                      setComment(detail.comment);
+                      console.log("comment show", detail);
+                      setUpdateShift(detail.shift_id);
+                      setUpdateId(data.id);
+                    }}
+                  >
+                    {" "}
+                    <FcComments />
+                  </p>: ''}</>
+                ))}
               </td>
               <td>
-                <span>
+                {data.section_details.map((detail, shiftIndex) => (
+                <>{detail?.shift?.name ?       <span>
+                    {" "}
+                    <button
+                      className="edit"
+                      onClick={() => {
+                        handleEdit(data);
+                        setShiftData(detail);
+                        setUpdateShift(detail.shift_id);
+                        setUpdateId(data.id);
+                      }}
+                    >
+                      Edit
+                    </button>
+                  </span>: ''}</>
+                ))}
+                {/* <span>
                   {" "}
                   <button
                     className="edit"
@@ -409,7 +320,7 @@ function AddSection() {
                   >
                     Edit
                   </button>
-                </span>
+                </span> */}
               </td>
             </tr>
           ))}
@@ -418,7 +329,6 @@ function AddSection() {
       {show && (
         <YourModal
           id={id}
-         
           editpershift={currentShift}
           closeModal={() => {
             setShow(false);
@@ -430,37 +340,37 @@ function AddSection() {
       )}
       {shows && (
         <EditModalDetail
-        id={updateShift}
-        update={() => {
-          getSectionById();
-        }}
-        shiftdata={shiftData}
-        updateId={update_id}
-        closeModal={() => {
-          setShows(false);
-          setUpdateShift(null)
-          setShiftData(null);
-          setUpdateId(null)
-        }}
+          id={updateShift}
+          update={() => {
+            getSectionById();
+          }}
+          shiftdata={shiftData}
+          updateId={update_id}
+          closeModal={() => {
+            setShows(false);
+            setUpdateShift(null);
+            setShiftData(null);
+            setUpdateId(null);
+          }}
         />
       )}
-      {
-        display && <CommentModal
-         rowId={update_id}
-         updateId={updateShift}
-         previousComment={comment}
+      {display && (
+        <CommentModal
+          rowId={update_id}
+          updateId={updateShift}
+          previousComment={comment}
           closeModal={() => {
             setDisplay(false);
-            setUpdateShift(null)
+            setUpdateShift(null);
             setShiftData(null);
-            setUpdateId(null)
+            setUpdateId(null);
           }}
           update={() => {
             getSectionById();
           }}
           shiftId={updateShift}
         />
-      }
+      )}
     </div>
   );
 }

@@ -127,7 +127,7 @@ function ActivityLog() {
                           <input type="checkbox" />
                         </td>
                         <td className="blue">{user.name}</td>
-                        <td>{user?.roles[0]?.display_name}</td>
+                        <td>{user?.roles[0]?.display_name == 'User' ? 'Employee' : user?.roles[0]?.display_name}</td>
                         <td className="underline"><Link to={`/activitylog/${user.id}`}><p>wefwefewfwefwef</p></Link></td>
                         <td className="long"></td>
                       </tr>

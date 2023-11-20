@@ -6,25 +6,31 @@ function CommentModal({rowId, closeModal, previousComment,updateId,update}) {
     // const [comment, setComment] = useState("");
     const API_ENDPOINT = "http://23.22.32.42/api";
     const token = useSelector((state) => state.userAuth.token);
-
-    const [formData, setFormData] = useState({
+    const [comment,setComment] =  useState("")
+    const [formData, setFormData] = useState({ 
         // section_id: id,
         // date: "",
         _method:"put",
-        shift_id: 1,
+        shift_id: updateId,
         comment: "",
       });
       useEffect(() => {
-       if(previousComment && previousComment !== "" || previousComment !== null){
-        setFormData(prevData => ({
-            ...prevData,
-            comment: previousComment
-        }
-            ))
-       }
+      //  if(previousComment && previousComment !== "" || previousComment !== null){
+        // setFormData(prevData => ({
+        //     ...prevData,
+        //     comment: previousComment
+        // }
+        //     ))
+      //  }
+      setComment(previousComment)
       }, [])
       
     const postApiData = async () => {
+        const formData = new FormData();
+        formData.append("_method", "put");
+        formData.append("comment", comment);
+     
+
         try {
           const response = await axios.post( `${API_ENDPOINT}/section-details/${updateId}`, formData, {
             headers: {
@@ -42,7 +48,7 @@ function CommentModal({rowId, closeModal, previousComment,updateId,update}) {
         }
       };
       const handleSubmit = () => {
-        console.log(previousComment)
+        console.log(comment)
         postApiData()
         update()
         closeModal()
@@ -62,12 +68,9 @@ function CommentModal({rowId, closeModal, previousComment,updateId,update}) {
               className="input"
               style={{borderRadius:"5px",height:"100px"}}
               name="date"
-              value={formData.comment}
+              value={comment}
               onChange={(e) => {
-                setFormData(prevData => ({
-                  ...prevData,
-                  comment: e.target.value
-                }));
+               setComment(e.target.value)
               }}            />
           </label>
         </div>
