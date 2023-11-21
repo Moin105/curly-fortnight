@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
-const API_ENDPOINT = "http://23.22.32.42/api";
+const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
 
 export const signupUser = createAsyncThunk(
   "userAuth/loginUser",

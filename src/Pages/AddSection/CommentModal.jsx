@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 function CommentModal({rowId, closeModal, previousComment,updateId,update}) {
     // const [comment, setComment] = useState("");
-    const API_ENDPOINT = "http://23.22.32.42/api";
+    const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
     const token = useSelector((state) => state.userAuth.token);
     const [comment,setComment] =  useState("")
     const [formData, setFormData] = useState({ 

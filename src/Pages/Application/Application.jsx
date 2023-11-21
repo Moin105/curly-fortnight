@@ -10,7 +10,7 @@ import { applicationUser } from "../../Redux/Slices/authSlice";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 function Application() {
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [name, setName] = useState("");

@@ -8,7 +8,7 @@ function NotificationDetail() {
   const token = useSelector((state) => state.userAuth.token);
   const { id } = useParams();
   const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   console.log("idge", id);
   const getNotificationData = async () => {
     const response = await axios.get(`${API_ENDPOINT}/notifications/${id}`, {

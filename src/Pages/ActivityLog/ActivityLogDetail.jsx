@@ -9,7 +9,7 @@ function ActivityLogDetail() {
   const [activity,setActivity] = useState([])
   const token = useSelector((state) => state.userAuth.token);
   const {id} = useParams()
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const getActivitiesData =async ()=>{
     const response = await axios.get(`${API_ENDPOINT}/activities-by-user-id/${id}`,{
       headers:{

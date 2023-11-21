@@ -9,7 +9,7 @@ const YourModal = ({ closeModal, id, update }) => {
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [shifts, setShifts] = useState(null);
   const [currentShift, setCurrentShift] = useState(1);
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
 
   const [formData, setFormData] = useState({
     section_id: id,

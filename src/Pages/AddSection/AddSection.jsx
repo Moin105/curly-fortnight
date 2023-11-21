@@ -65,7 +65,7 @@ function AddSection() {
   }, [token]);
 
   const navigate = useNavigate();
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const createSection = async () => {
     if (sectionName === "") {
       return toast.error("Please enter a section name");

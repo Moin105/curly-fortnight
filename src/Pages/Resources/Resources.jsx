@@ -12,7 +12,7 @@ import { current } from "@reduxjs/toolkit";
 function Resources() {
 
   const [resourcesCategories, setResourcesCategories] = useState([]);
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const [show, setShow] = useState(false);
   const [currentResourceCategory, setCurrentResourceCategory] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);

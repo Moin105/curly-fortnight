@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom/dist";
 
 import { Link } from "react-router-dom";
 function ApplicantDetails() {
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const { id } = useParams();
   const [applicantData, setApplicantData] = useState(null);
   const token = useSelector((state) => state.userAuth.token);

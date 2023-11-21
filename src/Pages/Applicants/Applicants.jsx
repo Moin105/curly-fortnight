@@ -20,7 +20,7 @@ function Applicants() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const [applicants, setApplicants] = useState(null);
   const token = useSelector((state) => state.userAuth.token);
   const getJobApplications = async () => {

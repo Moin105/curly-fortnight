@@ -31,7 +31,7 @@ function CreateShift() {
   
   const [error, setError] = useState(null);
   const token = useSelector((state) => state.userAuth.token);
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const user = useSelector((state) => state.authUser?.user);
   const loading = useSelector((state) => state.userAuth.loading);
   //   const error = useSelector((state) => state.userAuth?.errors?.error?.errors);

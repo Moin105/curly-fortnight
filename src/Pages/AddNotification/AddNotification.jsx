@@ -28,7 +28,7 @@ function AddNotification() {
     setIsCheckeds(!isCheckeds);
   };
   const navigate = useNavigate();
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const handleSelect = (value) => {
     setSelectedOption(value);
     // console.log(`Option selected:`, value);

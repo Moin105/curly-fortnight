@@ -5,7 +5,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import {toast,ToastContainer} from "react-toastify";
 function SectionBox({ title,id ,sectionsUpdate}) {
-  const API_ENDPOINT = "http://23.22.32.42/api";
+  const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const token = useSelector((state) => state.userAuth.token);
 
   const deleteSection = async (id) => {
