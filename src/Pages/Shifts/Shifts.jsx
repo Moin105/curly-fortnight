@@ -169,7 +169,7 @@ function Shifts() {
       <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
           <h2>Shifts</h2>
-          {users.length >0   ? (
+          {users   ? (
             <div className="activity-wrapper">
               <table class="blueTable">
                 <thead>
