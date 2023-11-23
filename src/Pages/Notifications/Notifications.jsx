@@ -63,7 +63,7 @@ function Notifications() {
         <div className="notification-container">
           <h2>Notification</h2>
           <div className="notification-wrapper">
-            {(searchQuery ? filteredNotifications : notifications)?.map(
+       {notifications &&   <>  {(searchQuery ? filteredNotifications : notifications)?.map(
               (notification) => (
                 <div className="notification-row" key={notification.id}>
                   <Link to={`/notifications/${notification.id}`}>
@@ -74,7 +74,7 @@ function Notifications() {
                   </span>
                 </div>
               )
-            )}
+            )}</>}
           </div>
         </div>
       </Layout>
