@@ -71,12 +71,12 @@ function Login() {
             {loading === 'pending' ? 'Logging In...' : 'Login'} 
             </button>
           {/* </Link> */}
-          <p>
+          {/* <p>
             Don’t have an account?
             <Link to="/signup">
               <span>Sign up</span>
             </Link>
-          </p>
+          </p> */}
         </div>
       </div>
     </div>

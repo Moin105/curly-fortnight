@@ -32,7 +32,7 @@ function App() {
   useEffect(() => {
     console.log("token", token);
   }, []);
-  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
+  const role = useSelector((state) => state.userAuth?.user); // Assuming the role is obtained from state
   useEffect(() => {
     console.log("tole", role);
   }, [role]);

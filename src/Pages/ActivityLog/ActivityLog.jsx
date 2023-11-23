@@ -113,7 +113,7 @@ function ActivityLog() {
                     <th>
                       <input type="checkbox" />
                     </th>
-                    <th>User </th>
+                    <th>Employee </th>
                     <th>Role </th>
                     <th className="long">Activity</th>
                     <th></th>

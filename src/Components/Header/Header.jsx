@@ -14,17 +14,17 @@ function Header() {
 
         <div className="tags-container">
           <ul className="nav-tags">
-            <li>Home</li>
+            {/* <li>Home</li>
             <li>About Us</li>
-            <li>Career</li>
+            <li>Career</li> */}
             <Link to="/application"><li>Application</li></Link>
-            <li>Contact Us</li>
-            <li>DMS</li>
+            {/* <li>Contact Us</li>
+            <li>DMS</li> */}
           </ul>
-         <span>|</span> 
+         {/* <span>|</span> 
           <span className="search">
               <IoSearchOutline/>
-          </span>
+          </span> */}
         </div>
         </div>
       </div>

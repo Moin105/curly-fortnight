@@ -145,11 +145,11 @@ function SideNav() {
             <Link to="/sections">
               {navs === 1 ? (
                 <li className="active">
-                  <SectionIcon /> Sections
+                  <SectionIcon /> Facility
                 </li>
               ) : (
                 <li>
-                  <SectionIcon /> Sections
+                  <SectionIcon /> Facility
                 </li>
               )}
             </Link>
