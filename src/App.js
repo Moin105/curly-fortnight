@@ -108,7 +108,7 @@ function App() {
       <Router>
         <Routes>
           {renderRoutes()}
-          <Route path="/" element={<Login/>}/>
+          {/* <Route path="/" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path='/application' element={<Application/>}/>
@@ -127,7 +127,7 @@ function App() {
           <Route path="/sections/add-section/:id" element={<AddSection/>}/>
           <Route path="/activitylog/:id" element={<ActivityLogDetail/>}/>
           <Route path="/users" element={<Users/>}/>
-          <Route path='/users/add-user' element={<CreateUser/>}/>
+          <Route path='/users/add-user' element={<CreateUser/>}/> */}
         </Routes>
       </Router>
     </div>
