@@ -23,9 +23,9 @@ function Notifications() {
     console.log("notifications", notifications);
   };
   useEffect(() => {
-    return () => {
+  
       getNotifications();
-    };
+  
   }, []);
   const getTimeSpan = (timestamp) => {
     const currentTime = new Date();

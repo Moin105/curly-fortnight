@@ -125,10 +125,10 @@ function Resources() {
     closeModals()
   };
   useEffect(() => {
-    return () => {
+    
       getResourcesCategory();
       getResources();
-    };
+    
   }, []);
 
   const createResourceCategory = async () => {
