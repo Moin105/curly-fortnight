@@ -147,10 +147,10 @@ function Shifts() {
     setUserInformation(data.shift);
   };
   useEffect(() => {
-    return () => {
+  
     //   getSections();
-      getShifts();
-    };
+    return  getShifts();
+    
   }, []);
   const emailToRemove = "superadmin@admin.com";
   const filteredUsers = users?.filter((user) => user.email !== emailToRemove);
