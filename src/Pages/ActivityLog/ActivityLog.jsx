@@ -82,7 +82,7 @@ function ActivityLog() {
   };
   useEffect(() => {
    
- return     getSections();
+     getSections();
 
   }, []);
   const emailToRemove = "superadmin@admin.com";
