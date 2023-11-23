@@ -81,10 +81,9 @@ function ActivityLog() {
     setUserInformation(data.user);
   };
   useEffect(() => {
-    return () => {
-      getSections();
-      getUsers();
-    };
+   
+ return     getSections();
+
   }, []);
   const emailToRemove = "superadmin@admin.com";
   const [searchQuery, setSearchQuery] = useState("");
@@ -98,6 +97,10 @@ function ActivityLog() {
     );
     setFilteredUserses(filtered);
   }, [searchQuery, users]);
+  useEffect(() => {
+   return getUsers();
+  }, [])
+  
   return (
     <div>
       <ToastContainer />
