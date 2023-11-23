@@ -39,6 +39,10 @@ function Users() {
     console.log(data);
     setUsers(data.users);
   };
+  useEffect(() => {
+    getUsers(); 
+  }, [])
+  
   const changeRole = async (id) => {
     const response = await axios.put(
       `${API_ENDPOINT}/users/${id}/make-or-remove-admin`,
