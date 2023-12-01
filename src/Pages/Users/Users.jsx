@@ -145,10 +145,10 @@ function Users() {
     setUserInformation(data.user);
   };
   useEffect(() => {
-    return () => {
+    
       getSections();
       getUsers();
-    };
+    
   }, []);
   const emailToRemove = "superadmin@admin.com";
 

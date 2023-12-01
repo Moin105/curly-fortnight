@@ -98,7 +98,7 @@ function ActivityLog() {
     setFilteredUserses(filtered);
   }, [searchQuery, users]);
   useEffect(() => {
-   return getUsers();
+    getUsers();
   }, [])
   
   return (

@@ -85,29 +85,28 @@ function App() {
     ],
   };
 
-  const renderRoutes = () => {
-    switch (role) {
-      case "super_admin":
-        return userRoutes.superAdmin;
-      case "admin":
-        return userRoutes.admin;
-      case "user":
-        return userRoutes.user;
-      default:
-        // If there's no role, display the default login and sign-up pages
-        return [
-          <Route key="login" path="/" element={<Login />} />,
-          <Route key="signup" path="/signup" element={<Signup />} />,
-          <Route path="/application" element={<Application />} />,
-        ];
-    }
-  };
+  // const renderRoutes = () => {
+  //   switch (role) {
+  //     case "super_admin":
+  //       return userRoutes.superAdmin;
+  //     case "admin":
+  //       return userRoutes.admin;
+  //     case "user":
+  //       return userRoutes.user;
+  //     default:
+  //       // If there's no role, display the default login and sign-up pages
+  //       return <>
+  //         <Route key="login" path="/" element={<Login />} />
+  //         <Route key="signup" path="/signup" element={<Signup />} />
+  //         <Route path="/application" element={<Application />} />
+  //         </>
+  //   }
+  // };
 
   return (
     <div className="App">
       <Router>
         <Routes>
-          {/* {renderRoutes()} */}
           <Route path="/" element={<Login/>}/>
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>

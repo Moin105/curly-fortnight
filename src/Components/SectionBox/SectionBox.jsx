@@ -26,14 +26,7 @@ function SectionBox({ title,id ,sectionsUpdate}) {
     console.log(data);
   };
   
-  
-  
-  
-  
-  
-  useEffect(() => {
-   
-  }, [])
+
   
   return (
     <>

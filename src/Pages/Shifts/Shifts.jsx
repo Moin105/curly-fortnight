@@ -149,7 +149,7 @@ function Shifts() {
   useEffect(() => {
   
     //   getSections();
-    return  getShifts();
+      getShifts();
     
   }, []);
   const emailToRemove = "superadmin@admin.com";

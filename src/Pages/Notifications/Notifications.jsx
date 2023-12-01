@@ -32,21 +32,21 @@ function Notifications() {
     const postTime = new Date(timestamp);
 
     const timeDifference = currentTime - postTime;
-    const timeInMinutes = Math.floor(timeDifference / 60000); // Convert milliseconds to minutes
+    const timeInMinutes = Math.floor(timeDifference / 60000)
 
     if (timeInMinutes < 60) {
       return timeInMinutes === 1
         ? "1 minute ago"
         : `${timeInMinutes} minutes ago`;
     } else {
-      const postDate = postTime.toISOString().split("T")[0]; // Get the date portion
-      return postDate; // For older posts, just show the date in the format 'YYYY-MM-DD'
+      const postDate = postTime.toISOString().split("T")[0]; 
+      return postDate; 
     }
   };
   const handleSearch = (query) => {
     setSearchQuery(query);
     if (query.trim() === "") {
-      setFilteredNotifications(null); // Reset filters when search query is empty
+      setFilteredNotifications(null); 
     } else {
       const filtered = notifications.filter((notification) =>
         notification.title.toLowerCase().includes(query.toLowerCase())
