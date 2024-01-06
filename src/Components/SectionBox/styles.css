@@ -1,24 +1,29 @@
 .alink {
   width: 47%;
   text-decoration: none;
+  /* Hover effect to change span color */
 }
 .alink .section-box {
   color: #fff;
   font-family: Poppins;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
   line-height: normal;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #0078c3;
   border-radius: 47px;
   height: 300px;
   position: relative;
 }
-.alink .section-box h2 {
-  color: white;
+.alink .section-box a {
+  text-decoration: none;
+}
+.alink .section-box a h2 {
   font-size: 30px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 700;
+  margin: 0; /* Remove default margin */
+  z-index: 2;
 }
 .alink .section-box .row {
   display: flex;
@@ -36,7 +41,41 @@
   font-family: Poppins;
   font-size: 15px;
   font-style: normal;
+  text-decoration: none;
+  padding: 3px 5px;
+  border-radius: 4440px;
   font-weight: 500;
   line-height: normal;
-  text-decoration-line: underline;
+  text-decoration-line: none;
+  transition: color 0.9s ease; /* Transition for color change */
+}
+.alink .section-box:hover .delete {
+  text-decoration: none;
+  border: 1px solid #ff0000;
+  padding: 3px 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #ff0000; /* Change to the desired color on hover */
+}
+.alink .section-box:hover .edit {
+  text-decoration: none;
+  border: 1px solid #0B63F8;
+  padding: 3px 7px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #0B63F8; /* Change to the desired color on hover */
+}
+.alink .section-box h2:hover {
+  color: #0B63F8;
+  transition: color 0.3s ease; /* Transition for color change */
+}
+.alink .delete:hover {
+  color: #fff !important;
+  background-color: #ff0000;
+  transition: color 0.3s ease; /* Transition for color change */
+}
+.alink .edit:hover {
+  color: #fff !important;
+  background-color: #0B63F8;
+  transition: color 0.3s ease; /* Transition for color change */
 }/*# sourceMappingURL=styles.css.map */

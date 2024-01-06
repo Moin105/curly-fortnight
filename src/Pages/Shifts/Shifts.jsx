@@ -168,7 +168,7 @@ function Shifts() {
       <ToastContainer />{" "}
       <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
-          <h2>Shifts</h2>
+          <h2 className="h2">Shifts</h2>
           {users   ? (
             <div className="activity-wrapper">
               <table class="blueTable">
@@ -184,8 +184,8 @@ function Shifts() {
                     <th>To  </th>
                     <th>From</th>
                     <th>Status</th>
-                    <th></th>
-                    <th></th>
+                    
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -204,21 +204,25 @@ function Shifts() {
                         <td>{user?.to}</td>
                         <td>{user?.from}</td>
                         <td style={{color: user.status == 1 ? "#31BC01" : "#BC0101"}}>{user.status == 1 ? 'Active': 'Disable'}</td>
-                        <td className="long"></td>
-                        <td>
+                        <td className="long">
+                         <div className="columnerieng">
+
                           <p
+                          className="edit"
                             onClick={() => {
                           navigate(`/shifts/edit-shift/${user?.id}`)
                             }}
                           >
-                            edit
+                            Edit
                           </p>
                           <p
+                          className="delete"
                              onClick={() => {
                               openMo();
                               getUserById(user.id);
                             }}
-                          >delete</p>
+                          >Delete</p>
+                         </div>
                         </td>
                       </tr>
                     );

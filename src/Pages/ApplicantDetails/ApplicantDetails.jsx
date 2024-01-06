@@ -7,6 +7,7 @@ import Layout from "../../Layout/Layout";
 import { useParams } from "react-router-dom/dist";
 
 import { Link } from "react-router-dom";
+import BackHeader from "../../Components/Header/BackHeader";
 function ApplicantDetails() {
   const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const { id } = useParams();
@@ -47,6 +48,7 @@ function ApplicantDetails() {
   };
   return (
     <div>
+      <BackHeader link="/applicants"/>
       <Layout>
         <div className="applicant-detail-container">
           <div className="rows">

@@ -26,16 +26,17 @@ import NotificationDetail from "./Pages/Notifications/NotificationDetail";
 import Profile from "./Pages/Profile/Profile";
 import Shifts from "./Pages/Shifts/Shifts";
 import CreateShift from "./Pages/CreateShift/CreateShift";
+import UserActivityLog from "./Pages/ActivityLog/UserActivityLog";
 function App() {
   const token = useSelector((state) => state.userAuth.token);
 
-  useEffect(() => {
-    console.log("token", token);
-  }, []);
-  const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
-  useEffect(() => {
-    console.log("tole", role);
-  }, [role]);
+  // useEffect(() => {
+  //   console.log("token", token);
+  // }, []);
+  // const role = useSelector((state) => state.userAuth?.user?.roles[0]?.name); // Assuming the role is obtained from state
+  // useEffect(() => {
+  //   console.log("tole", role);
+  // }, [role]);
   const userRoutes = {
     superAdmin: [
       // <Route path="/" element={<Login/>}/>,
@@ -125,6 +126,7 @@ function App() {
           <Route path="/sections/add-section" element={<AddSection/>}/>
           <Route path="/sections/add-section/:id" element={<AddSection/>}/>
           <Route path="/activitylog/:id" element={<ActivityLogDetail/>}/>
+          <Route path="/user-activitylog/" element={<UserActivityLog/>}/>
           <Route path="/users" element={<Users/>}/>
           <Route path='/users/add-user' element={<CreateUser/>}/>
         </Routes>

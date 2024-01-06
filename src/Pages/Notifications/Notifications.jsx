@@ -61,7 +61,7 @@ function Notifications() {
     <div>
       <Layout setSearchQuery={handleSearch}>
         <div className="notification-container">
-          <h2>Notification</h2>
+          <h2 className="h2">Notification</h2>
           <div className="notification-wrapper">
        {notifications &&   <>  {(searchQuery ? filteredNotifications : notifications)?.map(
               (notification) => (

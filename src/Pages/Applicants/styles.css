@@ -86,13 +86,13 @@
   font-family: Lato;
   font-size: 16px;
   font-style: normal;
-  border: 1px solid #343434;
+  border: 1px solid #dfdfdf;
   font-weight: 600;
   line-height: normal;
 }
 .applicant-container .applicant-wrapper table.blueTable tbody td {
   font-size: 16px;
-  border: 1px solid #343434;
+  border: 1px solid #dfdfdf;
   padding: 30px 0px;
 }
 .applicant-container .applicant-wrapper .blue {

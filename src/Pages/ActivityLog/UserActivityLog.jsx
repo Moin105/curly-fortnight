@@ -6,13 +6,15 @@ import './activity.css'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import BackHeader from '../../Components/Header/BackHeader'
-function ActivityLogDetail() {
+function UserActivityLog() {
   const [activity,setActivity] = useState([])
+  const UserId = useSelector((state) => state.userAuth.user.id);
+  console.log("user00000",UserId)
   const token = useSelector((state) => state.userAuth.token);
   const {id} = useParams()
   const API_ENDPOINT = "https://api.upscalemsgroup.com/api";
   const getActivitiesData =async ()=>{
-    const response = await axios.get(`${API_ENDPOINT}/activities-by-user-id/${id}`,{
+    const response = await axios.get(`${API_ENDPOINT}/activities-by-user-id/${UserId}`,{
       headers:{
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -42,8 +44,9 @@ function ActivityLogDetail() {
     return `${hours}:${minutes}:${seconds}`;
   }
   return (
-    <div className="activity-page">
-      <BackHeader link="/activitylog"/>
+    <Layout>
+    <div className="activity-user-page">
+      {/* <BackHeader link="/activitylog"/> */}
     <ToastContainer />
 <div className="activity-container">
   <div className="activity-form">
@@ -81,7 +84,8 @@ function ActivityLogDetail() {
   </div>
 </div>
 </div>
+    </Layout>
   )
 }
 
-export default ActivityLogDetail
+export default UserActivityLog

@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import "./notificationDetail.css"
 import { useParams } from "react-router-dom";
+import BackHeader from "../../Components/Header/BackHeader";
 function NotificationDetail() {
   const [notification, setNotification] = useState([]);
   const token = useSelector((state) => state.userAuth.token);
@@ -26,6 +27,7 @@ function NotificationDetail() {
   }, []);
   return (
     <div>
+      <BackHeader link="/notifications" />
       <h2>{notification?.title}</h2>
       <div className="notification-wrapper">
         <img src={`http://23.22.32.42/storage/${notification.attachment}`}/>

@@ -17,13 +17,17 @@
   display: flex;
   flex-wrap: wrap;
   margin-top: 20px;
-  gap: 20px;
+  gap: 10px;
   width: 100% !important;
 }
 .notification-container .notification-wrapper .notification-row {
   display: flex;
   justify-content: space-between;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 14px 4px -5px;
   align-items: center;
+  border: 1px solid #dfdfdf;
+  border-radius: 6px;
+  padding: 0px 20px;
   width: 100%;
 }
 .notification-container .notification-wrapper .notification-row a {
@@ -40,6 +44,26 @@
 }
 .notification-container .notification-wrapper .notification-row .notification-time {
   color: #000;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.notification-container .notification-wrapper .notification-row:hover {
+  background-color: #4d85e7;
+  transition: 0.5s;
+}
+.notification-container .notification-wrapper .notification-row:hover .notification-text {
+  color: #dfdfdf;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.notification-container .notification-wrapper .notification-row:hover .notification-time {
+  color: #dfdfdf;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;

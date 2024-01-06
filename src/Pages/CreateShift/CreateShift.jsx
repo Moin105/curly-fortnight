@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import TimeRangePicker from "./TimeRange";
+import BackHeader from "../../Components/Header/BackHeader";
 function CreateShift() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -188,6 +189,7 @@ const updateShift = async () => {
   
   return (
     <div className="shift-create-page">
+      <BackHeader link="/shifts" />
       <ToastContainer />
       <Header />
       <div className="shift-create-page-container">

@@ -23,17 +23,22 @@ const DateRangePicker = ({
 
   return (
     <div className="helos">
-      <h4>{label}</h4>
+      <label>{label}</label>
+      <div className='from-to-div'>
+      <div className="inpout-container">
       <input
         type="date"
         value={selectedStartDate}
         onChange={handleStartDateChange}
       />
+      </div>
+       <div className="inpout-container">
       <input
         type="date"
         value={selectedEndDate}
         onChange={handleEndDateChange}
-      />
+      /></div>
+      </div>
     </div>
   );
 };

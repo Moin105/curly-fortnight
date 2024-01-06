@@ -6,6 +6,7 @@ import { toast, ToastContainer } from "react-toastify";
 import Layout from "../../Layout/Layout";
 import Modal from "./Modal";
 import {AiFillCloseCircle} from 'react-icons/ai'
+import Spinner from "../../Components/Spinner/Spinner";
 import {BsCheckCircleFill} from 'react-icons/bs'
 import {BiSolidMessageSquareDetail} from 'react-icons/bi'
 import { Link } from "react-router-dom";
@@ -13,6 +14,8 @@ function Applicants() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
   const [applicantID, setApplicantId] = useState(null);
   const openModal = () => {
     setIsModalOpen(true);
@@ -24,6 +27,7 @@ function Applicants() {
   const [applicants, setApplicants] = useState(null);
   const token = useSelector((state) => state.userAuth.token);
   const getJobApplications = async () => {
+    setIsLoading(true)
     const response = await axios.get(`${API_ENDPOINT}/job-applications`, {
       headers: {
         "Content-Type": "application/json",

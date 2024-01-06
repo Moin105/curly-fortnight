@@ -39,13 +39,13 @@ function Sections() {
 
   return (
     <div>
-      <Layout setSearchQuery={setSearchQuery}>
+      <Layout setSearchQuery={setSearchQuery} facility={getSections}>
         <div className="sections-container">
-          <h2>Facility</h2>
+          <h2 className="h2">Facility</h2>
           <div className="section-wrapper">
             {filteredSections.length > 0 ? (
               filteredSections.map((section) => (
-                <Link to={`/sections/add-section/${section.id}`} className="alink">
+                <div className="alink">
                   <SectionBox
                     key={section.id}
                     index={section.id}
@@ -53,7 +53,7 @@ function Sections() {
                     title={section.name}
                     sectionsUpdate={getSections}
                   />
-                </Link>
+                </div>
               ))
             ) : (
               <h2 style={{ width: "100%", textAlign: "center" }}>

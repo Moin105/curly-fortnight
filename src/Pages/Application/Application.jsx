@@ -94,24 +94,24 @@ function Application() {
   const handlePhoneChange = (e) => {
     const phoneNumber = e.target.value;
     // const phoneRegex = /^\d{0,10}$/; // Allows only digits and up to 10 characters
-  
+
     // if (phoneRegex.test(phoneNumber)) {
-      const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
-      setPhone(formattedPhoneNumber);
+    const formattedPhoneNumber = formatPhoneNumber(phoneNumber);
+    setPhone(formattedPhoneNumber);
     // }
   };
-  
+
   const formatPhoneNumber = (phoneNumber) => {
-    const cleaned = ('' + phoneNumber).replace(/\D/g, ''); // Remove non-numeric characters
+    const cleaned = ("" + phoneNumber).replace(/\D/g, ""); // Remove non-numeric characters
     const match = cleaned.slice(0, 10).match(/^(\d{3})(\d{3})(\d{4})/);
-  
+
     if (match) {
-      return '(' + match[1] + ') ' + match[2] + '-' + match[3];
+      return "(" + match[1] + ") " + match[2] + "-" + match[3];
     }
-  
+
     return cleaned.slice(0, 10); // Truncate to 10 digits if longer
   };
-  
+
   useEffect(() => {
     console.log("error", error);
     for (const key in error) {
@@ -126,8 +126,8 @@ function Application() {
 
     if (!phonePattern.test(phone)) {
       // setPhoneError('Please enter a valid 10-digit phone number');
-      toast.error("Please enter a valid 10-digit phone number")
-      return
+      toast.error("Please enter a valid 10-digit phone number");
+      return;
     } else {
       // setPhoneError('');
     }
@@ -135,7 +135,7 @@ function Application() {
     formData.append("name", name);
     formData.append("email", email);
     formData.append("phone", phone);
-    formData.append("class", className)
+    formData.append("class", className);
     formData.append("address", address);
     formData.append("board_start", startDate1);
     formData.append("board_end", endDate1);
@@ -168,9 +168,8 @@ function Application() {
       );
 
       console.log("Response:", response.data);
-      toast.success(response.data.message)
+      toast.success(response.data.message);
       return response.data;
-
     } catch (error) {
       console.error("Error:", error);
       throw new Error("Failed to submit data");
@@ -182,36 +181,56 @@ function Application() {
       <Header />
       <div className="application-page-container">
         <div className="application-form">
-          <h2>Application</h2>
-          <input
-            onChange={(e) => setName(e.target.value)}
-            type="text"
-            placeholder="Enter Your Name "
-          />
-          <input
-            onChange={(e) => setClassName(e.target.value)}
-            type="text"
-            placeholder="Enter Your Class"
-          />
-          <input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            placeholder="Enter Your Email"
-          />
-           <input
-        onChange={handlePhoneChange}
-        type="text"
-        placeholder="Enter Your Phone"
-        value={phone}
-      />
-          <input
-            onChange={(e) => setAddress(e.target.value)}
-            type="text"
-            placeholder="Enter Your Address"
-          />
+          <h2 className="h2">Application</h2>
+          <div className="or-row">
+            <div className="inpout-container">
+              <label>Name</label>
+              <input
+                onChange={(e) => setName(e.target.value)}
+                type="text"
+                placeholder="Enter Your Name "
+              />
+            </div>
 
-          {/*  */}
+            <div className="inpout-container">
+              <label>Class</label>
+              <input
+                onChange={(e) => setClassName(e.target.value)}
+                type="text"
+                placeholder="Enter Your Class"
+              />
+            </div>
+          </div>
+          <div className="or-row">
+            <div className="inpout-container">
+              <label>Email</label>
+              <input
+                onChange={(e) => setEmail(e.target.value)}
+                type="email"
+                placeholder="Enter Your Email"
+              />
+            </div>
 
+            <div className="inpout-container">
+              <label>Phone Number</label>
+              <input
+                onChange={handlePhoneChange}
+                type="text"
+                placeholder="Enter Your Phone"
+                value={phone}
+              />
+            </div>
+          </div>
+
+          <div className="inpout-container" style={{ width: "100%" }}>
+            <label>Address</label>
+            <textarea
+              onChange={(e) => setAddress(e.target.value)}
+              type="text"
+              style={{ width: "100%", height: "100px", maxWidth: "644px" }}
+              placeholder="Enter Your Address"
+            />
+          </div>
           <DateRangePicker
             label={"Board"}
             selectedStartDate={startDate1}
@@ -219,7 +238,6 @@ function Application() {
             onStartDateChange={handleStartDateChange1}
             onEndDateChange={handleEndDateChange1}
           />
-
           <DateRangePicker
             label={"CPR"}
             selectedStartDate={startDate2}
@@ -227,7 +245,6 @@ function Application() {
             onStartDateChange={handleStartDateChange2}
             onEndDateChange={handleEndDateChange2}
           />
-
           <DateRangePicker
             label={"Physical"}
             selectedStartDate={startDate3}
@@ -243,15 +260,14 @@ function Application() {
             onEndDateChange={handleEndDateChange4}
           />
           <DateRangePicker
-            label={"Crimina background"}
+            label={"Criminal Background"}
             selectedStartDate={startDate5}
             selectedEndDate={endDate5}
             onStartDateChange={handleStartDateChange5}
             onEndDateChange={handleEndDateChange5}
           />
-
           <DateRangePicker
-            label={"drug test"}
+            label={"Drug Test"}
             selectedStartDate={startDate6}
             selectedEndDate={endDate6}
             onStartDateChange={handleStartDateChange6}
@@ -259,34 +275,67 @@ function Application() {
           />
           <div className="helos">
             <h4>Availability</h4>
-            <input
-              type="number"
-              placeholder="availability"
-              onChange={(e) => {
-                setAvailabilityDays(e.target.value);
-              }}
-            />
-            <input
-              type="date"
-              onChange={(e) => {
-                setAvailabilityStart(e.target.value);
-              }}
-            />
-            <input
-              type="date"
-              onChange={(e) => {
-                setAvailabilityEnd(e.target.value);
-              }}
-            />
+            <div className="rot-rwoe">
+              <div className="inpout-container">
+                <label>Availability</label>
+                <input
+                  type="number"
+                  placeholder="availability"
+                  onChange={(e) => {
+                    setAvailabilityDays(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="inpout-container">
+                <label>Start Date</label>
+                <input
+                  type="date"
+                  onChange={(e) => {
+                    setAvailabilityStart(e.target.value);
+                  }}
+                />
+              </div>
+              <div className="inpout-container">
+                <label>End Date</label>
+                <input
+                  type="date"
+                  onChange={(e) => {
+                    setAvailabilityEnd(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
           </div>
 
           {/*  */}
+          <div className="or-row">
+          <div className="inpout-container">
+            <label>References</label>
           <input
             onChange={(e) => setReferences(e.target.value)}
             type="text"
             placeholder="References"
           />
+          </div>
+          <div className="inpout-container">
+            <label>Drivers Liscense</label>
           <input
+            onChange={(e) => setDriver(e.target.value)}
+            type="text"
+            placeholder="References"
+          />
+          </div>
+          </div>
+          <div className="inpout-container" style={{ width: "100%" }}>
+            <label>Notes</label>
+          <textarea
+            onChange={(e) => setNotes(e.target.value)}
+            type="text"
+            style={{ width: "100%", height: "100px", maxWidth: "644px" }}
+            placeholder="References"
+          />
+          </div>
+          {/* <input
             onChange={(e) => setDriver(e.target.value)}
             type="text"
             placeholder="Enter Driver"
@@ -295,7 +344,7 @@ function Application() {
             onChange={(e) => setNotes(e.target.value)}
             type="text"
             placeholder="Enter Notes"
-          />
+          /> */}
           <button
             onClick={() => {
               postApplication();

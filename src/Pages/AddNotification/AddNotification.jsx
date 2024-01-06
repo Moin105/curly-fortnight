@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import Layout from "../../Layout/Layout";
+import BackHeader from "../../Components/Header/BackHeader";
 function AddNotification() {
   const token = useSelector((state) => state.userAuth.token);
   const [title, setTitle] = useState("");
@@ -106,7 +107,11 @@ function AddNotification() {
     fileInputRef.current.click();
   };
   return (
+
+    <>
     <Layout>
+      <BackHeader link="/notifications" />
+
       <div className="notification-page">
         <div className="rows">
           <h2>Notifications</h2>
@@ -173,6 +178,7 @@ function AddNotification() {
         </div>
       </div>
     </Layout>
+    </>
   );
 }
 

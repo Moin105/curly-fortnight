@@ -124,4 +124,22 @@
 }
 .modal-content .row .modal-content .send:hover {
   background: #0B63F8; /* Slightly darker red on hover */
+}
+
+.columnerieng {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.columnerieng .edit {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background-color: #0B63F8;
+  color: white;
+}
+.columnerieng .delete {
+  padding: 10px 16px;
+  background-color: #ff0000;
+  color: white;
+  border-radius: 8px;
 }/*# sourceMappingURL=styles.css.map */

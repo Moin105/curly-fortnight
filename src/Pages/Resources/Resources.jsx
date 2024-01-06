@@ -217,7 +217,7 @@ function Resources() {
       <Layout setSearchQuery={setSearchQuery}>
         <div className="resources-container">
           <div className="rows">
-            <h2>Resources</h2>
+            <h2 className="h2">Resources</h2>
             <div className="categories">
               {" "}
               <span
@@ -277,28 +277,28 @@ function Resources() {
             <table class="blueTable">
               <thead>
                 <tr>
-                  <th>
+                  {/* <th>
                     <input type="checkbox" />
-                  </th>
+                  </th> */}
                   <th>Name </th>
                   <th>Availability </th>
                   <th>Assigned Section</th>
                   <th>Assigned By</th>
-                  <th className="long"></th>
+                  {/* <th className="long"></th> */}
                 </tr>
               </thead>
               <tbody>
                 {filteredResources.map((resource, index) => {
                   return (
                     <tr key={index}>
-                      <td>
+                      {/* <td>
                         <input type="checkbox" />
-                      </td>
+                      </td> */}
                       <td className="blue">{resource?.name}</td>
                       <td className="green">{resource?.status == 1 ?<p style={{color:"#31bc01"}}>Available</p> : <p style={{color:"#BC0101"}}> N/A</p>}</td>
                       <td>{resource?.assigned_section?.name  ? resource?.assigned_section?.name :<p>No Section Assigned</p>}</td>
                       <td>{resource?.assigned_by?.name  ? resource?.assigned_by?.name : "No One Assigned"}</td>
-                      <td className="long"></td>
+                      {/* <td className="long"></td> */}
                     </tr>
                   );
                 })}

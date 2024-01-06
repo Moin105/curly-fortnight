@@ -140,10 +140,10 @@ function SideNav() {
         )}
       </ul> */}
       <ul className="sidebar-tags">
-        {role === "super_admin" && (
+        {role == "super_admin" && (
           <>
             <Link to="/sections">
-              {navs === 1 ? (
+              {navs == 1 ? (
                 <li className="active">
                   <SectionIcon /> Facility
                 </li>
@@ -154,7 +154,7 @@ function SideNav() {
               )}
             </Link>
             <Link to="/shifts">
-              {navs === 8 ? (
+              {navs == 8 ? (
                 <li className="active">
                   <SectionIcon /> Shifts
                 </li>
@@ -166,7 +166,7 @@ function SideNav() {
             </Link>
 
             <Link to="/activitylog">
-              {navs === 2 ? (
+              {navs == 2 ? (
                 <li className="active">
                   <ActivityLogIcon /> Activity Log
                 </li>
@@ -178,7 +178,7 @@ function SideNav() {
             </Link>
 
             <Link to="/notifications">
-              {navs === 3 ? (
+              {navs == 3 ? (
                 <li className="active">
                   <img src={notification} alt="Notifications" /> Notifications
                 </li>
@@ -190,7 +190,7 @@ function SideNav() {
             </Link>
 
             <Link to="/resources">
-              {navs === 4 ? (
+              {navs == 4 ? (
                 <li className="active">
                   <img src={user} alt="Resources" /> Resources
                 </li>
@@ -202,7 +202,7 @@ function SideNav() {
             </Link>
 
             <Link to="/applicants">
-              {navs === 5 ? (
+              {navs == 5 ? (
                 <li className="active">
                   <img src={user} alt="Applicants" /> Applicants
                 </li>
@@ -214,7 +214,7 @@ function SideNav() {
             </Link>
 
             <Link to="/users">
-              {navs === 7 ? (
+              {navs == 7 ? (
                 <li className="active">
                   <img src={user} alt="Users" /> Employees
                 </li>
@@ -229,10 +229,10 @@ function SideNav() {
           </>
         )}
 
-        {role === "admin" && (
+        {role == "admin" && (
           <>
            <Link to="/sections">
-  {navs === 1 ? (
+  {navs == 1 ? (
     <li className="active">
       <SectionIcon /> Sections
     </li>
@@ -244,7 +244,7 @@ function SideNav() {
 </Link>
 
 <Link to="/activitylog">
-  {navs === 2 ? (
+  {navs == 2 ? (
     <li className="active">
       <ActivityLogIcon /> Activity Log
     </li>
@@ -256,7 +256,7 @@ function SideNav() {
 </Link>
 
 <Link to="/notifications">
-  {navs === 3 ? (
+  {navs == 3 ? (
     <li className="active">
       <img src={notification} alt="Notifications" /> Notifications
     </li>
@@ -268,7 +268,7 @@ function SideNav() {
 </Link>
 
 <Link to="/resources">
-  {navs === 4 ? (
+  {navs == 4 ? (
     <li className="active">
       <img src={user} alt="Resources" /> Resources
     </li>
@@ -282,10 +282,10 @@ function SideNav() {
           </>
         )}
 
-        {role === "user" && (
+        {role == "user" && (
           <>
            <Link to="/sections">
-  {navs === 1 ? (
+  {navs == 1 ? (
     <li className="active">
       <SectionIcon /> Sections
     </li>
@@ -296,8 +296,8 @@ function SideNav() {
   )}
 </Link>
 
-<Link to="/activitylog">
-  {navs === 2 ? (
+<Link to="/user-activitylog">
+  {navs == 2 ? (
     <li className="active">
       <ActivityLogIcon /> Activity Log
     </li>
@@ -309,7 +309,7 @@ function SideNav() {
 </Link>
 
 <Link to="/notifications">
-  {navs === 3 ? (
+  {navs == 3 ? (
     <li className="active">
       <img src={notification} alt="Notifications" /> Notifications
     </li>

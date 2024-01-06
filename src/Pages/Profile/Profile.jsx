@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { logoutUser } from '../../Redux/Slices/authSlice';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import BackHeader from '../../Components/Header/BackHeader';
 function Profile() {
     const user = useSelector((state) => state.userAuth.user);
     const dispatch = useDispatch();
@@ -11,6 +12,7 @@ function Profile() {
     console.log("user",user)
   return (
     <div>
+      <BackHeader link="/sections"/>
     <h2>Profile</h2>
     <div className="profile-wrapper">
       {/* <img src={`http://23.22.32.42/storage/${profile.attachment}`}/> */}

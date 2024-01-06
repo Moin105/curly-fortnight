@@ -6,6 +6,8 @@ import Modal from "./UserModal";
 import SectionSelect from "./SectionSelect";
 import { toast, ToastContainer } from "react-toastify";
 import { Link } from "react-router-dom/dist";
+import {BiSolidMessageSquareDetail} from 'react-icons/bi'
+
 import { useSelector } from "react-redux";
 function ActivityLog() {
   const [users, setUsers] = useState(null);
@@ -107,7 +109,7 @@ function ActivityLog() {
       {" "}
       <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
-          <h2>Activity Log</h2>
+          <h2 className="h2">Activity Log</h2>
           {users  ? (
             <div className="activity-wrapper">
               <table class="blueTable">
@@ -119,7 +121,7 @@ function ActivityLog() {
                     <th>Employee </th>
                     <th>Role </th>
                     <th className="long">Activity</th>
-                    <th></th>
+                    {/* <th></th> */}
                   </tr>
                 </thead>
                 <tbody>
@@ -131,8 +133,15 @@ function ActivityLog() {
                         </td>
                         <td className="blue">{user.name}</td>
                         <td>{user?.roles[0]?.display_name == 'User' ? 'Employee' : user?.roles[0]?.display_name}</td>
-                        <td className="underline"><Link to={`/activitylog/${user.id}`}><p>wefwefewfwefwef</p></Link></td>
-                        <td className="long"></td>
+                        <td style={{gap:"3px",justifyContent:"center"}}>
+              <Link to={`/activitylog/${user.id}`} className="alink long">
+                 <span style={{fontSize:"20px",color:'#551A8B'}}>
+                 <BiSolidMessageSquareDetail/>
+                  </span>
+                </Link>
+               </td> 
+                        {/* <td className="underline " style={{width:"20%"}}><Link to={`/activitylog/${user.id}`}><p>wefwefewfwefwef</p></Link></td> */}
+                        {/* <td className="long"></td> */}
                       </tr>
                     );
                   })}{" "}

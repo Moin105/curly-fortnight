@@ -10,6 +10,7 @@ import { FcComments } from "react-icons/fc";
 import YourModal from "./DetailModal";
 import EditModalDetail from "./EditModalDetail";
 import CommentModal from "./CommentModal";
+import BackHeader from "../../Components/Header/BackHeader";
 function AddSection() {
   const [sectionDates, setSectionDates] = useState([]);
   const [comment, setComment] = useState("");
@@ -146,7 +147,8 @@ function AddSection() {
 
   return (
     <div className="add-section-container">
-      <SectionHeader id={id} />
+      <BackHeader link={'/sections'}/>
+      {/* <SectionHeader id={id} /> */}
       <ToastContainer />
       {id ? (
         <>

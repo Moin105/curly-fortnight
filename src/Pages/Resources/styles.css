@@ -146,6 +146,7 @@
 .resources-container .resources-wrapper table.blueTable tbody td {
   font-size: 16px;
   padding: 10px 0px;
+  border: 1px solid #dfdfdf;
 }
 .resources-container .resources-wrapper .blue {
   color: #0b63f8;
@@ -167,6 +168,7 @@
   color: #000;
   font-family: Poppins;
   padding: 10px 0px;
+  border: 1px solid #dfdfdf;
   font-size: 20px;
   font-style: normal;
   font-weight: 500;

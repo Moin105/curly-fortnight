@@ -168,7 +168,7 @@ function Users() {
       <ToastContainer />{" "}
       <Layout setSearchQuery={setSearchQuery}>
         <div className="activitylog-container">
-          <h2>Employees</h2>
+          <h2 className="h2">Employees</h2>
           {users && users.length > 0 ? (
             <div className="activity-wrapper">
               <table class="blueTable">
@@ -182,7 +182,7 @@ function Users() {
                       Employee{" "}
                     </th>
                     <th>Role </th>
-                    <th></th>
+                    <th>Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -199,9 +199,11 @@ function Users() {
                           {user.name}
                         </td>
                         <td>{user?.roles[0]?.display_name == 'User' ? 'Employee' : user?.roles[0]?.display_name}</td>
-                        <td className="long"></td>
+                        {/* <td className="long"></td> */}
                         <td>
-                          <p
+                          <div className="columnerieng">
+                          <p 
+                          className="edit"
                             onClick={() => {
                               if (user?.roles[0]?.display_name == "Admin") {
                                 openModals();
@@ -215,11 +217,13 @@ function Users() {
                             edit
                           </p>
                           <p
+                          className="delete"
                             onClick={() => {
                               openMo();
                               getUserById(user.id);
                             }}
-                          >delete</p>
+                          >Delete</p>
+                          </div>
                         </td>
                       </tr>
                     );
